@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1073739934332",
+    "firebase_url": "https://pure-live-94f02.firebaseio.com",
+    "project_id": "pure-live-94f02",
+    "storage_bucket": "pure-live-94f02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073739934332:android:9b98f5dffd4ff6d45fb7f9",
+        "android_client_info": {
+          "package_name": "com.example.pure_live_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073739934332-45laig24mu3lbq709i7v2nr25h0uk03d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pure_live_chat",
+            "certificate_hash": "172ffa01a80161a09bada6559227c464967ec7ea"
+          }
+        },
+        {
+          "client_id": "1073739934332-km726lh6k2n6q286f2a7urgj3p01bhem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAefjbqc3PJX0dTi0qgjgj2T1Cy2edZ6iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073739934332-km726lh6k2n6q286f2a7urgj3p01bhem.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
