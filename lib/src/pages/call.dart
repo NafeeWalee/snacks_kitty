@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:agora_rtc_engine/rtc_local_view.dart' as RtcLocalView;
 import 'package:agora_rtc_engine/rtc_remote_view.dart' as RtcRemoteView;
 import 'package:flutter/material.dart';
@@ -40,11 +40,13 @@ class _CallPageState extends State<CallPage> {
   @override
   void initState() {
     super.initState();
+
     // initialize agora sdk
     initialize();
   }
 
   Future<void> initialize() async {
+
     if (APP_ID.isEmpty) {
       setState(() {
         _infoStrings.add(

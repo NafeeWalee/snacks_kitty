@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -31,7 +31,7 @@ class IndexState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Agora Flutter QuickStart'),
+        title: Text('PURE LIVE STREAMING'),
       ),
       body: Center(
         child: Container(
@@ -106,6 +106,7 @@ class IndexState extends State<IndexPage> {
   }
 
   Future<void> onJoin() async {
+
     // update input validation
     setState(() {
       _channelController.text.isEmpty
@@ -129,8 +130,6 @@ class IndexState extends State<IndexPage> {
   }
 
   Future<void> _handleCameraAndMic() async {
-    await PermissionHandler().requestPermissions(
-      [PermissionGroup.camera, PermissionGroup.microphone],
-    );
+    await [Permission.location, Permission.storage,Permission.camera, Permission.microphone].request();
   }
 }
