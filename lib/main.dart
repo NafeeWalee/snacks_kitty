@@ -1,19 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:pure_live_chat/HomePage.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:pure_live_chat/Utils/controller/sizeConfig.dart';
+import 'package:pure_live_chat/src/Screens/homePage.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  runApp(InitiateApp());
+}
 
 
-void main() => runApp(MyApp());
+class InitiateApp extends StatelessWidget {
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Pure Live',
+
+    Get.put(GetSizeConfig());
+
+    return GetMaterialApp(
+      title: 'Pure International',
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.zoom,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: AppBarTheme(
+              elevation: 0,
+              color: Colors.deepPurple,
+              centerTitle: false,
+              iconTheme: IconThemeData(
+                  color: Colors.black
+              )
+          )
       ),
       home: HomePage(),
     );
   }
 }
+

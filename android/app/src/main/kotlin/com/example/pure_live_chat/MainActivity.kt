@@ -1,4 +1,4 @@
-package com.example.pure_live_chat
+package pure.firebase.chat
 
 import io.flutter.embedding.android.FlutterActivity
 
