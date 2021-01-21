@@ -6,14 +6,15 @@ Ready made startup application for quick development.
 
 -[Global] <br />
    flutter pub global run rename --bundleId com.example.android.app <br />
-   flutter pub global run rename --appname "Network Upp" <br />
--[Android]
-   flutter pub global run rename --bundleId com.example.android.app --target android
-   flutter pub global run rename --appname yourappname --target android
+   flutter pub global run rename --appname "Network Upp" <br /> <br />
+   
+-[Android] <br />
+   flutter pub global run rename --bundleId com.example.android.app --target android <br />
+   flutter pub global run rename --appname yourappname --target android <br />
 
--[iOS]
-   flutter pub global run rename --bundleId com.example.android.app --target ios
-   flutter pub global run rename --appname yourappname --target ios
+-[iOS] <br />
+   flutter pub global run rename --bundleId com.example.android.app --target ios <br />
+   flutter pub global run rename --appname yourappname --target ios <br />
 
    ### NOTE: DO NOT USE UNDERSCORE FOR bundleID!!(iOS rejects to upload any app that uses underscore on bundleID) Example: com.flutter.exampleapp instead of com.flutter.example_app (But No Problem Android)
 
