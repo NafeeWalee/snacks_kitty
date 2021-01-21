@@ -20,16 +20,18 @@ Ready made startup application for quick development.
 
 ### Get a debug key
 
-- [Generate Key]
+- [Generate Key] <br />
     keytool -genkey -noprompt -alias androiddebugkey -dname "CN=firebase backend, OU=upwork, O=upwork, L=Khulna, S=Khulna, C=BD" -keystore %USERPROFILE%\.android\debug.keystore -storepass 123456 -keypass 123456 -keyalg RSA -keysize 2048 -validity 10000
 
-- [Generate SHA]
+- [Generate SHA] <br />
     keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.android\debug.keystore
 
-- [Generate Key Hashes] (For Facebook)
+- [Generate Key Hashes] (For Facebook) <br />
 
     Download openssl:
     https://code.google.com/archive/p/openssl-for-windows/downloads
+    
+    <br />
 
     keytool -exportcert -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore" | "%USERPROFILE%\.android\openssl-0.9.8k_X64\bin\openssl" sha1 -binary | "%USERPROFILE%\.android\openssl-0.9.8k_X64\bin\openssl" base64
 
@@ -38,7 +40,7 @@ Ready made startup application for quick development.
     FROM: C:\Users\PC_USER_NAME\.android\debug.keystore <br />
     TO: C:\Users\PC_USER_NAME\AndroidStudioProjects\Project_Name\android\app\debug.keystore <br />
 
-- [These are already included,but just in case]
+- [These are already included,but just in case] <br />
 
     gradle.propertise:
 
