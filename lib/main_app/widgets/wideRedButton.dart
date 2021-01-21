@@ -1,8 +1,8 @@
 
-import 'package:pure_live_chat/Utils/controller/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pure_live_chat/appConst.dart';
+import 'file:///C:/Users/nafee/AndroidStudioProjects/PureLiveChat-Personal-/lib/main_app/resources/appConst.dart';
+import 'package:pure_live_chat/main_app/utils/controller/sizeConfig.dart';
 
 
 class WideRedButton extends StatelessWidget {

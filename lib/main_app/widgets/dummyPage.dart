@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'controller/sizeConfig.dart';
+import '../utils/controller/sizeConfig.dart';
 
 class DummyPage extends StatefulWidget {
   @override
