@@ -35,17 +35,17 @@ Ready made startup application for quick development.
 
     ### NOTE: after generating the key MOVE & REPLACE debug.keystore FROM %USERPROFILE%\.android\debug.keystore TO android/app/debug.keystore where google-services.json file is!
 
-    FROM: C:\Users\PC_USER_NAME\.android\debug.keystore
-    TO: C:\Users\PC_USER_NAME\AndroidStudioProjects\Project_Name\android\app\debug.keystore
+    FROM: C:\Users\PC_USER_NAME\.android\debug.keystore <br />
+    TO: C:\Users\PC_USER_NAME\AndroidStudioProjects\Project_Name\android\app\debug.keystore <br />
 
 - [These are already included,but just in case]
 
     gradle.propertise:
 
-    RELEASE_STORE_FILE=debug.keystore
-    RELEASE_STORE_PASSWORD=123456
-    RELEASE_KEY_ALIAS=androiddebugkey
-    RELEASE_KEY_PASSWORD=123456
+    RELEASE_STORE_FILE=debug.keystore <br />
+    RELEASE_STORE_PASSWORD=123456 <br />
+    RELEASE_KEY_ALIAS=androiddebugkey <br />
+    RELEASE_KEY_PASSWORD=123456 <br />
 
     app/build.gradle:
 
