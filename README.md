@@ -4,9 +4,9 @@ Ready made startup application for quick development.
 
 ### Change applicationID/bundleID and appName
 
--[Global]
-   flutter pub global run rename --bundleId com.example.android.app
-   flutter pub global run rename --appname "Network Upp"
+-[Global] <br />
+   flutter pub global run rename --bundleId com.example.android.app <br />
+   flutter pub global run rename --appname "Network Upp" <br />
 -[Android]
    flutter pub global run rename --bundleId com.example.android.app --target android
    flutter pub global run rename --appname yourappname --target android
