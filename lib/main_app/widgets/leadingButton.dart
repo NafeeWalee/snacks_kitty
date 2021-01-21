@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'file:///C:/Users/nafee/AndroidStudioProjects/PureLiveChat-Personal-/lib/main_app/resources/appConst.dart';
+import 'package:pure_live_chat/main_app/resources/appConst.dart';
 
 class LeadingButton extends StatelessWidget {
   @override
