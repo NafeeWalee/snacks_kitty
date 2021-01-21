@@ -8,6 +8,7 @@ import 'package:connectivity/connectivity.dart';
 import 'dart:async';
 
 import 'package:pure_live_chat/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_live_chat/main_app/utils/localNotification/localNotification.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -92,6 +93,7 @@ class _HomePageState extends State<HomePage>
               bottom: height * 20, left: width * 15, right: width * 15),
           snackPosition: SnackPosition.BOTTOM);
     } else {
+      LocalNotification.showNotification('FoodJocky Message', 'You have got a new order!');
       // Get.snackbar('Connected to Network', 'Internet Connection Established!',backgroundColor: Colors.black,colorText: Colors.white,
       //     margin: EdgeInsets.only(bottom: height*20,left: width*15,right:width*15),snackPosition: SnackPosition.BOTTOM);
     }
