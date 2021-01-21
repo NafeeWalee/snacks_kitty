@@ -15,7 +15,7 @@ Ready made startup application for quick development.
    flutter pub global run rename --bundleId com.example.android.app --target ios
    flutter pub global run rename --appname yourappname --target ios
 
-   !!!!NOTE: DO NOT USE UNDERSCORE FOR bundleID!!(iOS rejects to upload any app that uses underscore on bundleID) Example: com.flutter.exampleapp instead of com.flutter.example_app (But No Problem Android)
+   ### NOTE: DO NOT USE UNDERSCORE FOR bundleID!!(iOS rejects to upload any app that uses underscore on bundleID) Example: com.flutter.exampleapp instead of com.flutter.example_app (But No Problem Android)
 
 ### Get a debug key
 
@@ -32,7 +32,7 @@ Ready made startup application for quick development.
 
     keytool -exportcert -alias androiddebugkey -keystore "%USERPROFILE%\.android\debug.keystore" | "%USERPROFILE%\.android\openssl-0.9.8k_X64\bin\openssl" sha1 -binary | "%USERPROFILE%\.android\openssl-0.9.8k_X64\bin\openssl" base64
 
-    !!!!NOTE: after generating the key MOVE & REPLACE debug.keystore FROM %USERPROFILE%\.android\debug.keystore TO android/app/debug.keystore where google-services.json file is!
+    ### NOTE: after generating the key MOVE & REPLACE debug.keystore FROM %USERPROFILE%\.android\debug.keystore TO android/app/debug.keystore where google-services.json file is!
 
     FROM: C:\Users\PC_USER_NAME\.android\debug.keystore
     TO: C:\Users\PC_USER_NAME\AndroidStudioProjects\Project_Name\android\app\debug.keystore
@@ -92,7 +92,7 @@ Ready made startup application for quick development.
 
 ### Launcher Icon
 
-    !!!!NOTE: DO NOT USE TRANSPARENT IMAGE AS iOS Rejects to upload the app (All OK on Android)
+    ### NOTE: DO NOT USE TRANSPARENT IMAGE AS iOS Rejects to upload the app (All OK on Android)
 
 
 ### Genarate Android SignedAPK/Bundle
