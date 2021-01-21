@@ -37,15 +37,13 @@ class _HomePageState extends State<HomePage>
       super.initState();
       setInitialScreenSize();
       initConnectivity();
-      //initLocalNotification();
-      _connectivitySubscription =
-          _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+      _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     }
   }
 
   @override
   void dispose() {
-    _connectivitySubscription.cancel();
+    _connectivitySubscription?.cancel();
     super.dispose();
   }
 
@@ -94,7 +92,6 @@ class _HomePageState extends State<HomePage>
               bottom: height * 20, left: width * 15, right: width * 15),
           snackPosition: SnackPosition.BOTTOM);
     } else {
-      // print('123');
       // Get.snackbar('Connected to Network', 'Internet Connection Established!',backgroundColor: Colors.black,colorText: Colors.white,
       //     margin: EdgeInsets.only(bottom: height*20,left: width*15,right:width*15),snackPosition: SnackPosition.BOTTOM);
     }
