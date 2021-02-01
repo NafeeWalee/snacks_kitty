@@ -49,9 +49,20 @@ class _HomePageState extends State<HomePage>
   }
 
   setInitialScreenSize() {
+    getSizeConfig.setSize(
+      (Get.width -
+          (Get.mediaQuery.padding.left + Get.mediaQuery.padding.right)) /
+          1000,
+      (Get.height -
+          (Get.mediaQuery.padding.top + Get.mediaQuery.padding.bottom)) /
+          1000,
+    );
+
     width = getSizeConfig.width.value;
     height = getSizeConfig.height.value;
+
   }
+
 
   Future initConnectivity() async {
     ConnectivityResult result;
