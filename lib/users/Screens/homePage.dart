@@ -10,6 +10,7 @@ import 'dart:async';
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
 import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/Delivery.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/pickup.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin,TickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
-
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   GetSizeConfig getSizeConfig = Get.find();
   double width;
   double height;
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage>
 
   List<Widget> screens = [
     Delivery(),
-    Delivery(),
+    Pickup(),
     Delivery(),
   ];
   @override
@@ -184,13 +185,21 @@ class _HomePageState extends State<HomePage>
           return Future.value(null);
         },
         child: Scaffold(
+          key: scaffoldKey,
+            drawerEnableOpenDragGesture: false,
+            endDrawerEnableOpenDragGesture: false,
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             elevation: 10,
             title: Row(
               children: [
                 IconButtonConstraints(
                     function: () {
-
+                      if(scaffoldKey.currentState.isDrawerOpen){
+                        scaffoldKey.currentState.openEndDrawer();
+                      }else{
+                        scaffoldKey.currentState.openDrawer();
+                      }
                     },
                     icon: Icons.dehaze,
                     color: Colors.purple,
@@ -212,6 +221,71 @@ class _HomePageState extends State<HomePage>
                         style: TextStyle(color: Colors.black,fontSize: getSizeConfig.getPixels(14))),
                   ],
                 )
+              ],
+            ),
+          ),
+          drawer: Drawer(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  width: width*1000,
+                  height: height*400,
+                  decoration: BoxDecoration(
+                    color: Colors.purple,
+                  ),
+                 child: Align(
+                   alignment: Alignment.bottomLeft,
+                     child: GestureDetector(
+                       onTap: (){
+
+                       },
+                       child: Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: ListTile(
+                           title: Text('Log in/ Create account',style: TextStyle(color: Colors.white,fontSize: getSizeConfig.getPixels(18),fontWeight: FontWeight.bold),),
+                         ),
+                       ),
+                     ))
+                ),
+               FlatButton(
+                 onPressed: (){
+
+                 },
+                 child: ListTile(
+                   leading: Icon(Icons.file_present,color: Colors.purple,),
+                   title: Text('Orders'),
+                 ),
+
+               ),
+                FlatButton(
+                  onPressed: (){
+
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.help_outline,color: Colors.purple,),
+                    title: Text('Helpline'),
+                  ),
+
+                ),
+                FlatButton(
+                  onPressed: (){
+
+                  },
+                  child: ListTile(
+                    title: Text('Settings'),
+                  ),
+
+                ),
+                FlatButton(
+                  onPressed: (){
+
+                  },
+                  child: ListTile(
+                    title: Text('Terms & Conditions/Privacy'),
+                  ),
+
+                ),
               ],
             ),
           ),

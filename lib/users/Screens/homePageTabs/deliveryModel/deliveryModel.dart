@@ -59,3 +59,20 @@ List<HorizontalModelClass> newItems = [
       imageURL:
       'https://www.rover.com/blog/wp-content/uploads/2020/07/51by4b7gLkL-1.jpg',storeName: 'Meow Box', storeAddress: '69, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5),
 ];
+
+List<HorizontalModelClass> storeDetails = [
+  HorizontalModelClass(imageURL: 'https://businessviewmagazine.com/wp-content/uploads/2018/04/Store-Front-2.jpg',
+      storeName: 'Global Pet Foods', storeAddress: '\$ • 4293 Hastings St, Burnaby, BC V5C 2J5, Canada',deliveryFee: 7,review: 999,rate: 4.5),
+
+  HorizontalModelClass(
+      imageURL:
+      'https://s3-media0.fl.yelpcdn.com/bphoto/xvwhmXTXpY209BrKhbIRVQ/o.jpg',
+      storeName: 'Pet Food Express', storeAddress: '\$ • House. 68/C (1st Floor), Shwapno Express Building, Zigatola Post Office Road Dhaka, 1209',deliveryFee: 7,review: 999,rate: 4.5),
+  HorizontalModelClass(
+      imageURL:
+      'https://www.freshwatercleveland.com/galleries/News_Items/2019/June_2019/Issue_387/lake_erie_pet_food_01.jpg',
+      storeName: 'Lake Erie Pet Food', storeAddress: '\$ • 1830 Orange St, Ashland, OH 44805, United States',deliveryFee: 7,review: 999,rate: 4.5),
+  HorizontalModelClass(
+      imageURL:
+      'https://cdn.shoplightspeed.com/shops/627879/files/24840517/alabama-pet-food-storefront.jpg',storeName: 'Alabama Pet Foods', storeAddress: '\$ • Pet supply store in Homewood, Alabama',deliveryFee: 7,review: 999,rate: 4.5),
+];
