@@ -9,8 +9,9 @@ import 'dart:async';
 
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/Delivery.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/delivery.dart';
 import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/pickup.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/shops.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage>
   List<Widget> screens = [
     Delivery(),
     Pickup(),
-    Delivery(),
+    Shops(),
   ];
   @override
   void initState() {
