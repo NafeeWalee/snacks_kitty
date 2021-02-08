@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="pure.firebase.chat">
+    package="pure.international.snackskitty.customer">
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,8 +12,8 @@
     <application
 
         android:name="io.flutter.app.FlutterApplication"
-        android:label="PureLive"
-        android:icon="@mipmap/ic_launcher">
+        android:label="SnacksKitty"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

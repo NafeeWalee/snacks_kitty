@@ -1,4 +1,4 @@
-name: pure_live_chat
+name: pure.international.snackskitty.customer
 description: Realtime chatting system with audio and video streaming.
 
 
@@ -58,7 +58,7 @@ dev_dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/bg.png"
+  image_path: "assets/images/paw.jpg"
     ##--> REPLACE THE app-icon.png FILE IN ASSET/IMAGE AND THEN <--##
     ##--> RUN BELOW CODE TO CHANGE THE APP ICON <--##
     #flutter pub get
@@ -83,3 +83,6 @@ flutter:
     - family: Quicksand
       fonts:
         - asset: assets/fonts/Quicksand-Regular.ttf
+    - family: Grandstander
+      fonts:
+        - asset: assets/fonts/Grandstander-Regular.ttf

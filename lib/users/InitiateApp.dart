@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pure_live_chat/main_app/utils/controller/sizeConfig.dart';
-import 'package:pure_live_chat/users/Screens/homePage.dart';
+import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/homePage.dart';
 class InitiateApp extends StatelessWidget {
 
   @override
@@ -16,10 +16,11 @@ class InitiateApp extends StatelessWidget {
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
           scaffoldBackgroundColor: Colors.white,
-          fontFamily: 'PermanentMarker-Regular',
+          fontFamily: 'Grandstander',
           appBarTheme: AppBarTheme(
             elevation: 0,
-            color: Colors.deepPurple,
+            color: Colors.white,
+            // color: Colors.deepPurple,
             centerTitle: false,
             iconTheme: IconThemeData(
                 color: Colors.black

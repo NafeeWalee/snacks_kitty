@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pure_live_chat/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+
 
 class AppBarText extends StatelessWidget {
   final String title;

@@ -18,6 +18,8 @@ Ready made startup application for quick development.
 
    ### NOTE: DO NOT USE UNDERSCORE FOR bundleID!!(iOS rejects to upload any app that uses underscore on bundleID) Example: com.flutter.exampleapp instead of com.flutter.example_app (But No Problem Android)
 
+   ### NOTE: (optional) change name in pubspec ,refactor folder names under kotlin directory & scroll down in .packages change package name
+
 ### Get a debug key
 
 - [Generate Key] <br />

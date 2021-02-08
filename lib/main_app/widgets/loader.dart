@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:pure_live_chat/main_app/resources/appConst.dart';
+import 'package:pure.international.snackskitty.customer/main_app/resources/appConst.dart';
 
 class Loader extends StatelessWidget {
   @override

@@ -7,8 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:connectivity/connectivity.dart';
 import 'dart:async';
 
-import 'package:pure_live_chat/main_app/utils/controller/sizeConfig.dart';
-import 'package:pure_live_chat/main_app/utils/localNotification/localNotification.dart';
+import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/Delivery.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin {
+    with AutomaticKeepAliveClientMixin,TickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -30,6 +32,14 @@ class _HomePageState extends State<HomePage>
   final Connectivity _connectivity = Connectivity();
   StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
+  TabController tabController;
+  int tabIndex = 0;
+
+  List<Widget> screens = [
+    Delivery(),
+    Delivery(),
+    Delivery(),
+  ];
   @override
   void initState() {
     if (!mounted) {
@@ -38,31 +48,39 @@ class _HomePageState extends State<HomePage>
       super.initState();
       setInitialScreenSize();
       initConnectivity();
-      _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+
+      tabController = TabController(length: 3, vsync: this);
+      tabController.addListener(_handleTabSelection);
+
+      _connectivitySubscription =
+          _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
     }
+  }
+
+  void _handleTabSelection() {
+    setState(() {});
   }
 
   @override
   void dispose() {
     _connectivitySubscription?.cancel();
+    tabController.dispose();
     super.dispose();
   }
 
   setInitialScreenSize() {
     getSizeConfig.setSize(
       (Get.width -
-          (Get.mediaQuery.padding.left + Get.mediaQuery.padding.right)) /
+              (Get.mediaQuery.padding.left + Get.mediaQuery.padding.right)) /
           1000,
       (Get.height -
-          (Get.mediaQuery.padding.top + Get.mediaQuery.padding.bottom)) /
+              (Get.mediaQuery.padding.top + Get.mediaQuery.padding.bottom)) /
           1000,
     );
 
     width = getSizeConfig.width.value;
     height = getSizeConfig.height.value;
-
   }
-
 
   Future initConnectivity() async {
     ConnectivityResult result;
@@ -104,9 +122,7 @@ class _HomePageState extends State<HomePage>
               bottom: height * 20, left: width * 15, right: width * 15),
           snackPosition: SnackPosition.BOTTOM);
     } else {
-      LocalNotification.showNotification('FoodJocky Message', 'You have got a new order!');
-      // Get.snackbar('Connected to Network', 'Internet Connection Established!',backgroundColor: Colors.black,colorText: Colors.white,
-      //     margin: EdgeInsets.only(bottom: height*20,left: width*15,right:width*15),snackPosition: SnackPosition.BOTTOM);
+     // LocalNotification.showNotification('SnacksKitty', 'Welcome home, nyah!!');
     }
     print('init result: ${currentStatus.toString()}');
   }
@@ -168,10 +184,59 @@ class _HomePageState extends State<HomePage>
           return Future.value(null);
         },
         child: Scaffold(
-          appBar: AppBar(),
-          body: Container(
-            color: Colors.blue,
+          appBar: AppBar(
+            elevation: 10,
+            title: Row(
+              children: [
+                IconButtonConstraints(
+                    function: () {
+
+                    },
+                    icon: Icons.dehaze,
+                    color: Colors.purple,
+                    size: 30),
+                SizedBox(width: width*50,height: height*10,),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical:4),
+                      child: Text(
+                        'Home',
+                        style: TextStyle(color: Colors.purple),
+                      ),
+                    ),
+                    Text('420, Big Kitty Castle',
+                        style: TextStyle(color: Colors.black,fontSize: getSizeConfig.getPixels(14))),
+                  ],
+                )
+              ],
+            ),
           ),
-        ));
+          body: Column(
+            children: [
+              TabBar(
+                controller: tabController,
+                unselectedLabelColor: Colors.black,
+                indicatorColor: Colors.purple,
+                labelColor: Colors.purple,
+                tabs: [
+                  Tab(text: 'Delivery',),
+                  Tab(text: 'Pick-Up',),
+                  Tab(text: 'Shops',),
+                ],
+              ),
+              Expanded(
+                child: IndexedStack(
+                  children: screens,
+                  index: tabController.index,
+                ),
+              ),
+            ],
+          )
+        ),
+    );
   }
 }
