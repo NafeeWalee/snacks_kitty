@@ -282,35 +282,33 @@ class Pickup extends StatelessWidget {
                               ),
                               width: width * 600,
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: height * 10),
-                              width: width * 250,
-                              height: height * 35,
-                              decoration: BoxDecoration(
+                            Card(
+                                margin: EdgeInsets.only(top: width*20),
+                                shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(width * 20),
+                                  bottomRight: Radius.circular(width * 20),
+                                ),
+                                ),
                                 color: Colors.purple,
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(width * 20),
-                                    bottomRight: Radius.circular(width * 20)),
-                              ),
-                              child: Text(
-                                '25% OFF',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(
-                                  top: height * 180, left: width * 20),
-                              width: width * 350,
-                              height: height * 35,
-                              decoration: BoxDecoration(
+                                child: Padding(
+                                  padding: EdgeInsets.all( width * 15),
+                                  child: Text(
+                                    '25% OFF',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                )),
+                            Positioned(
+                              top: height * 180,
+                              left: width *20,
+                              child: Card(
+                                margin: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(width * 20),
-                              ),
-                              child: Text(
-                                'Pick up in 15 min',
-                                style: TextStyle(color: Colors.black),
+                                child: Padding(
+                                  padding: EdgeInsets.all( width * 15),
+                                  child: Text(    'Pick up in 15 min',
+                                    style: TextStyle(color: Colors.black),),
+                                ),
                               ),
                             ),
                           ],
@@ -432,59 +430,51 @@ class Pickup extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(top: height * 10),
-                            width: width * 500,
-                            height: height * 35,
-                            decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: width * 25),
-                              child: Text(
-                                '25% OFF + Cookie Treats',
-                                style: TextStyle(color: Colors.white),
+                          Card(
+                              margin: EdgeInsets.only(top: width*20),
+                              shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(width * 20),
+                                bottomRight: Radius.circular(width * 20),
                               ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(top: height * 50),
-                            width: width * 250,
-                            height: height * 35,
-                            decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: width * 25),
-                              child: Text(
-                                'FEATURED',
-                                style: TextStyle(color: Colors.white),
                               ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(
-                                top: height * 180, left: width * 20),
-                            width: width * 350,
-                            height: height * 35,
-                            decoration: BoxDecoration(
+                              color: Colors.purple,
+                              child: Padding(
+                                padding: EdgeInsets.all( width * 15),
+                                child: Text(
+                                  '25% OFF + Cookie Treats',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                          Card(
+                              margin: EdgeInsets.only(top: width*100),
+                              shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(width * 20),
+                                bottomRight: Radius.circular(width * 20),
+                              ),
+                              ),
+                              color: Colors.purple,
+                              child: Padding(
+                                padding: EdgeInsets.all( width * 15),
+                                child: Text(
+                                  'FEATURED',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              )),
+                          Positioned(
+                            top: height * 180,
+                            left: width *20,
+                            child: Card(
+                              margin: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(width * 20),
-                            ),
-                            child: Text(
-                              'Pick up in 15 min',
-                              style: TextStyle(color: Colors.black),
+                              child: Padding(
+                                padding: EdgeInsets.all( width * 15),
+                                child: Text(    'Pick up in 15 min',
+                                  style: TextStyle(color: Colors.black),),
+                              ),
                             ),
                           ),
+
                         ],
                       ),
                     ),

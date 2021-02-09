@@ -16,7 +16,9 @@ class HorizontalModelClass {
   int review;
   int distance;
 
-  HorizontalModelClass({this.imageURL,this.storeName,this.deliveryFee,this.rate,this.review,this.storeAddress,this.distance});
+  String promoName;
+
+  HorizontalModelClass({this.imageURL,this.storeName,this.deliveryFee,this.rate,this.review,this.storeAddress,this.distance,this.promoName});
 }
 
 
@@ -125,4 +127,18 @@ List<HorizontalModelClass> oneStopShopList = [
   HorizontalModelClass(
       imageURL:
       'https://www.rover.com/blog/wp-content/uploads/2020/07/51by4b7gLkL-1.jpg',storeName: 'Meow Box', storeAddress: '\$\$\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5),
+];
+
+List<HorizontalModelClass> shopList = [
+  HorizontalModelClass(imageURL: 'https://images-na.ssl-images-amazon.com/images/I/71uNRpO6LJL.jpg',storeName: 'Meow Box', storeAddress: '\$\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 10,promoName: 'KITTY20 or KITTY50'),
+
+  HorizontalModelClass(
+      imageURL:
+      'https://s3.eu-west-2.amazonaws.com/devo.core.images/products/thumbnail/7613036051187.jpg',storeName: 'Meow Box', storeAddress: '\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 180,promoName: 'VOUCHER: CASTLE60'),
+  HorizontalModelClass(
+      imageURL:
+      'https://i.ebayimg.com/images/g/A7sAAOSwk8pgF6Zq/s-l400.png',storeName: 'Meow Box', storeAddress: '\$\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 100,promoName: 'KITTY20 or KITTY50'),
+  HorizontalModelClass(
+      imageURL:
+      'https://www.rover.com/blog/wp-content/uploads/2020/07/51by4b7gLkL-1.jpg',storeName: 'Meow Box', storeAddress: '\$\$\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5,promoName: 'KITTY20 or KITTY50'),
 ];

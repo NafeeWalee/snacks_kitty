@@ -193,7 +193,7 @@ class Shops extends StatelessWidget {
                           child: Stack(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(top: height*40),
+                                margin: EdgeInsets.only(top: height * 40),
                                 height: height * 200,
                                 alignment: Alignment.bottomCenter,
                                 child: Image.network(
@@ -201,10 +201,12 @@ class Shops extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: width * 15, vertical: height * 15),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: width * 15,
+                                    vertical: height * 15),
                                 child: Container(
                                   color: Colors.white,
-                                  width:  height * 180,
+                                  width: height * 180,
                                   child: Text(
                                     items.title,
                                     style: TextStyle(
@@ -323,51 +325,49 @@ class Shops extends StatelessWidget {
                               ),
                               width: width * 600,
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: height * 10),
-                              width: width * 370,
-                              height: height * 35,
-                              decoration: BoxDecoration(
+                            Card(
+                                margin: EdgeInsets.only(top: width*20),
+                                shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(width * 20),
+                                  bottomRight: Radius.circular(width * 20),
+                                ),
+                                ),
                                 color: Colors.purple,
-                                borderRadius: BorderRadius.only(
+                                child: Padding(
+                                  padding: EdgeInsets.all( width * 15),
+                                  child: Text(
+                                    'KITTY20 or KITTY50',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                )),
+                            Card(
+                                margin: EdgeInsets.only(top: width*100),
+                                shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(width * 20),
-                                    bottomRight: Radius.circular(width * 20)),
-                              ),
-                              child: Text(
-                                'KITTY20 or KITTY50',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(top: height * 50),
-                              width: width * 280,
-                              height: height * 35,
-                              decoration: BoxDecoration(
+                                    bottomRight: Radius.circular(width * 20),
+                                ),
+                                ),
                                 color: Colors.purple,
-                                borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(width * 20),
-                                    bottomRight: Radius.circular(width * 20)),
-                              ),
-                              child: Text(
-                                'Free Delivery',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                            Container(
-                              alignment: Alignment.center,
-                              margin: EdgeInsets.only(
-                                  top: height * 180, left: width * 20),
-                              width: width * 160,
-                              height: height * 35,
-                              decoration: BoxDecoration(
+                                child: Padding(
+                                  padding: EdgeInsets.all( width * 15),
+                                  child: Text(
+                                    items.deliveryFee == 0
+                                        ? 'Free delivery'
+                                        : 'Tk ${items.deliveryFee.toString()} Delivery fee',
+                                    style: TextStyle(color: Colors.white),),
+                                )),
+                            Positioned(
+                              top: height * 180,
+                              left: width *25,
+                              child: Card(
+                                margin: EdgeInsets.zero,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(width * 20),
-                              ),
-                              child: Text(
-                                '20 min',
-                                style: TextStyle(color: Colors.black),
+                                child: Padding(
+                                  padding: EdgeInsets.all( width * 15),
+                                  child: Text( '20 min',
+                                    style: TextStyle(color: Colors.black),),
+                                ),
                               ),
                             ),
                           ],
@@ -454,7 +454,7 @@ class Shops extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               horizontal: width * 15, vertical: height * 5),
           child: Text(
-            'All Stores',
+            'Shop by Stores',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: getSizeConfig.getPixels(18)),
@@ -466,147 +466,155 @@ class Shops extends StatelessWidget {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
-            itemCount: storeDetails.length,
+            itemCount: shopList.length,
             itemBuilder: (context, index) {
-              var items = storeDetails[index];
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: height * 250,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width * 10, vertical: height * 10),
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(width * 15),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image:
-                                    CachedNetworkImageProvider(items.imageURL),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(top: height * 10),
-                            width: width * 500,
-                            height: height * 35,
-                            decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: width * 25),
-                              child: Text(
-                                '25% OFF + Cookie Treats',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: EdgeInsets.only(top: height * 50),
-                            width: width * 250,
-                            height: height * 35,
-                            decoration: BoxDecoration(
-                              color: Colors.purple,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: width * 25),
-                              child: Text(
-                                'FEATURED',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.only(
-                                top: height * 180, left: width * 20),
-                            width: width * 160,
-                            height: height * 35,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(width * 20),
-                            ),
-                            child: Text(
-                              '20 min',
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+              var items = shopList[index];
+              return Padding(
+                padding: EdgeInsets.only(
+                    right: width * 20, top: height * 10, bottom: height * 20),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(width * 30),
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * 10),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
+                  elevation: 5,
+                  color: Colors.white,
+                  child: Container(
+                    height: height * 270,
+                    child: Row(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.all(2),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                items.storeName,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Row(
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: EdgeInsets.all(width * 35),
+                            child: Container(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(
-                                    Icons.star,
-                                    size: width * 45,
-                                    color: Colors.purple,
+                                  Expanded(
+                                    flex: 3,
+                                    child: ClipRRect(
+                                      borderRadius:
+                                          BorderRadius.circular(width * 40),
+                                      child: Stack(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: CachedNetworkImageProvider(
+                                                    items.imageURL),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            top: width*10,
+                                            left: width*130,
+                                            child: Card(
+                                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
+                                                color: Colors.white,
+                                                child: Padding(
+                                                  padding: EdgeInsets.all( width * 10),
+                                                  child: Text( '20 min',
+                                                    style: TextStyle(color: Colors.black),),
+                                                ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                  Text(
-                                    items.rate.toString(),
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    '(${items.review.toString()})',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.normal),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: height * 20),
+                                      child: Text(
+                                       items.deliveryFee == 0? 'Free delivery' : items.deliveryFee,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            fontSize:
+                                                getSizeConfig.getPixels(12)),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                            items.storeAddress,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: getSizeConfig.getPixels(14)),
+                        Expanded(
+                          flex: 3,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                top: width * 35,
+                                bottom: width * 35,
+                                right: width * 35),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: height * 5,horizontal: width*15),
+                                  child: Text(
+                                    items.storeName,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:
+                                            getSizeConfig.getPixels(16)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: height * 5,horizontal: width*15),
+                                  child: Text(
+                                    items.storeAddress,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize:
+                                            getSizeConfig.getPixels(16)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: height * 15,
+                                ),
+                                Flexible(
+                                  fit: FlexFit.loose,
+                                  child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*30)),
+                                      color: Colors.purple,
+                                      child: Padding(
+                                        padding: EdgeInsets.all( width * 15),
+                                        child: Text(
+                                          items.promoName,
+                                          style: TextStyle(color: Colors.white),),
+                                      )),
+                                ),
+                                Flexible(
+                                  fit: FlexFit.loose,
+                                  child: Card(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*30)),
+                                      color: Colors.purple,
+                                      child: Padding(
+                                        padding: EdgeInsets.all( width * 15),
+                                        child: Text(
+                                          items.deliveryFee == 0
+                                              ? 'Free delivery'
+                                              : 'Tk ${items.deliveryFee.toString()} Delivery fee',
+                                          style: TextStyle(color: Colors.white),),
+                                      )),
+                                ),
+
+                              ],
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                            'Tk ${items.deliveryFee.toString()} Delivery fee',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                        )
                       ],
                     ),
-                  )
-                ],
+                  ),
+                ),
               );
             },
           ),
