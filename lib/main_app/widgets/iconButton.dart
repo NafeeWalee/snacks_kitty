@@ -7,12 +7,14 @@ class IconButtonConstraints extends StatelessWidget {
   final IconData icon;
   final Color color;
   final double size;
+  final double iconSize;
 
   IconButtonConstraints(
       {@required this.function,
       @required this.icon,
       @required this.color,
-      @required this.size});
+      @required this.size,
+      @required this.iconSize});
 
   final GetSizeConfig sizeConfigController = Get.find();
 
@@ -25,7 +27,7 @@ class IconButtonConstraints extends StatelessWidget {
       onPressed: () {
         if (function != null) function();
       },
-      icon: Icon(icon),
+      icon: Icon(icon,size: iconSize,),
       constraints: BoxConstraints(),
       padding: EdgeInsets.zero,
     );

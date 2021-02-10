@@ -9,9 +9,9 @@ import 'dart:async';
 
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/delivery.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/pickup.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/shops.dart';
+import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/delivery/delivery.dart';
+import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/pickup/pickup.dart';
+import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/shops/shops.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -177,6 +177,7 @@ class _HomePageState extends State<HomePage>
 
     return hasConnection;
   }
+
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/deliveryModel/deliveryModel.dart';
+import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+
+import 'shopsModel.dart';
 
 class Shops extends StatelessWidget {
   final GetSizeConfig getSizeConfig = Get.find();
@@ -124,6 +126,7 @@ class Shops extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: promoClass.length,
           itemBuilder: (context, index) {
+            PromoClass items = promoClass[index];
             return Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: width * 10, vertical: height * 15),
@@ -134,7 +137,7 @@ class Shops extends StatelessWidget {
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image:
-                        CachedNetworkImageProvider(promoClass[index].imageURL),
+                        CachedNetworkImageProvider(items.imageURL),
                   ),
                 ),
                 width: width * 350,
@@ -169,7 +172,7 @@ class Shops extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: shopsFromSnacksKitty.length,
               itemBuilder: (context, index) {
-                var items = shopsFromSnacksKitty[index];
+                PromoClass items = shopsFromSnacksKitty[index];
                 return Padding(
                     padding: EdgeInsets.symmetric(
                         vertical: height * 10, horizontal: width * 10),
@@ -301,7 +304,7 @@ class Shops extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: oneStopShopList.length,
               itemBuilder: (context, index) {
-                var items = oneStopShopList[index];
+                HomepageModelClass items = oneStopShopList[index];
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -468,7 +471,7 @@ class Shops extends StatelessWidget {
             scrollDirection: Axis.vertical,
             itemCount: shopList.length,
             itemBuilder: (context, index) {
-              var items = shopList[index];
+              HomepageModelClass items = shopList[index];
               return Padding(
                 padding: EdgeInsets.only(
                     right: width * 20, top: height * 10, bottom: height * 20),
