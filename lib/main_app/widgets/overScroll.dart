@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class OverScroll extends StatelessWidget {
   final Widget child;
-  OverScroll({@required this.child,});
+  OverScroll({required this.child,});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class OverScroll extends StatelessWidget {
         onNotification: (OverscrollIndicatorNotification overScroll) {
           overScroll.disallowGlow();
           return null;
-        },
+        } as bool Function(OverscrollIndicatorNotification)?,
         child: child);
   }
 }

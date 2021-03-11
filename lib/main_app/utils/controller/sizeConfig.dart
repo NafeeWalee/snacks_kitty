@@ -10,6 +10,6 @@ class GetSizeConfig extends GetxController{
   }
 
   getPixels(w){
-    return width.value * w/width.value;
+    return width.value! * w/width.value!;
   }
 }

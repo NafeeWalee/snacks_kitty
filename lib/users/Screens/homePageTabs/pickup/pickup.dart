@@ -10,8 +10,8 @@ import 'package:pure.international.snackskitty.customer/users/Screens/modelClass
 
 class Pickup extends StatelessWidget {
   final GetSizeConfig getSizeConfig = Get.find();
-  double width;
-  double height;
+  double? width = 0.0;
+  double? height = 0.0;
 
   setInitialScreenSize() {
     width = getSizeConfig.width.value;
@@ -33,29 +33,29 @@ class Pickup extends StatelessWidget {
           children: [
             searchFilter(),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 25),
+              padding: EdgeInsets.symmetric(horizontal: width! * 25),
               child: Container(
-                height: height * 100,
+                height: height! * 100,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(width * 30),
+                  borderRadius: BorderRadius.circular(width! * 30),
                   image: DecorationImage(
                     fit: BoxFit.fitWidth,
-                    image:  CachedNetworkImageProvider('https://www.google.com/maps/d/thumbnail?mid=1KeJE4RmXWerDfxkhP7OYlckKacE&hl=en'),
+                    image:  CachedNetworkImageProvider('https://i.ibb.co/0FjRDg0/thumbnail.jpg'),
                   )
                 ),
                 child: Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(width * 30),
+                      borderRadius: BorderRadius.circular(width! * 30),
                     color: Colors.yellow.withOpacity(0.3),
                   ),
 
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: width * 10),
+                    padding: EdgeInsets.symmetric(horizontal: width! * 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: width * 30),
+                          padding: EdgeInsets.symmetric(horizontal: width! * 30),
                           child: Text(
                             'We found restaurants near you',
                             style: TextStyle(
@@ -66,14 +66,14 @@ class Pickup extends StatelessWidget {
                         ),
                         Card(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(width*40),
+                            borderRadius: BorderRadius.circular(width!*40),
                           ),
                           elevation: 5,
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: width * 30,right: width * 10,top: height*10,bottom: height*10),
+                                padding: EdgeInsets.only(left: width! * 30,right: width! * 10,top: height!*10,bottom: height!*10),
                                 child: Text(
                                   'Show map',
                                   style: TextStyle(
@@ -85,7 +85,7 @@ class Pickup extends StatelessWidget {
 
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Icon(Icons.arrow_forward_ios_outlined,color: Colors.purple,size: width*40,),
+                                child: Icon(Icons.arrow_forward_ios_outlined,color: Colors.purple,size: width!*40,),
                               )
                             ],
                           ) ,
@@ -97,7 +97,7 @@ class Pickup extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: width * 20),
+              padding: EdgeInsets.only(left: width! * 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,9 +118,9 @@ class Pickup extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-              vertical: height * 15, horizontal: width * 20),
+              vertical: height! * 15, horizontal: width! * 20),
           child: Container(
-            height: height * 230,
+            height: height! * 230,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -130,7 +130,7 @@ class Pickup extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width * 10),
+                      padding: EdgeInsets.symmetric(horizontal: width! * 10),
                       child: Text(
                         'Pick-Up and Save',
                         style: TextStyle(
@@ -141,9 +141,9 @@ class Pickup extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: height * 15, horizontal: width * 10),
+                          vertical: height! * 15, horizontal: width! * 10),
                       child: Container(
-                          width: width * 550,
+                          width: width! * 550,
                           child: Text(
                             'Self-collect for guaranteed discount',
                             style: TextStyle(
@@ -154,7 +154,7 @@ class Pickup extends StatelessWidget {
                   ],
                 ),
                 Container(
-                    width: width * 380,
+                    width: width! * 380,
                     child: Image(
                       image: ExactAssetImage('assets/images/order_pick_up.png'),
                     ))
@@ -163,18 +163,18 @@ class Pickup extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(vertical: height * 10),
+          padding: EdgeInsets.symmetric(vertical: height! * 10),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: width * 20),
+                    horizontal: width! * 20),
                 child: Card(
                   elevation: 6,
                   child: Container(
-                    width: width * 750,
-                    height: width * 150,
+                    width: width! * 750,
+                    height: width! * 150,
                     child: TextField(
                       controller: search,
                       focusNode: searchNode,
@@ -193,33 +193,33 @@ class Pickup extends StatelessWidget {
                           ),
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20)),
+                              borderRadius: BorderRadius.circular(width! * 20)),
                           disabledBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20)),
+                              borderRadius: BorderRadius.circular(width! * 20)),
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20)),
+                              borderRadius: BorderRadius.circular(width! * 20)),
                           errorBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20)),
+                              borderRadius: BorderRadius.circular(width! * 20)),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20)),
+                              borderRadius: BorderRadius.circular(width! * 20)),
                           focusedErrorBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(width * 20))),
+                              borderRadius: BorderRadius.circular(width! * 20))),
                     ),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 5),
+                padding: EdgeInsets.symmetric(horizontal: width! * 5),
                 child: Card(
                   elevation: 6,
                   child: Container(
-                    width: width * 150,
-                    height: width * 150,
+                    width: width! * 150,
+                    height: width! * 150,
                     child: Icon(
                       Icons.add_road_outlined,
                       color: Colors.purple,
@@ -236,14 +236,14 @@ class Pickup extends StatelessWidget {
 
   Padding nearestStores() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: height * 15),
+      padding: EdgeInsets.symmetric(vertical: height! * 15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: width * 15, vertical: height * 5),
+                horizontal: width! * 15, vertical: height! * 5),
             child: Text(
               'Nearest to you',
               style: TextStyle(
@@ -252,9 +252,9 @@ class Pickup extends StatelessWidget {
             ),
           ),
           Container(
-            height: height * 350,
+            height: height! * 350,
             child: ListView.builder(
-              padding: EdgeInsets.only(right: width * 30),
+              padding: EdgeInsets.only(right: width! * 30),
               physics: ClampingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: nearestStore.length,
@@ -265,48 +265,48 @@ class Pickup extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: height * 250,
+                      height: height! * 250,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: width * 10, vertical: height * 10),
+                            horizontal: width! * 10, vertical: height! * 10),
                         child: Stack(
                           children: [
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.purple.withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(width * 15),
+                                borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: CachedNetworkImageProvider(
-                                      items.imageURL),
+                                      items.imageURL!),
                                 ),
                               ),
-                              width: width * 600,
+                              width: width! * 600,
                             ),
                             Card(
-                                margin: EdgeInsets.only(top: width*20),
+                                margin: EdgeInsets.only(top: width!*20),
                                 shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20),
+                                  topRight: Radius.circular(width! * 20),
+                                  bottomRight: Radius.circular(width! * 20),
                                 ),
                                 ),
                                 color: Colors.purple,
                                 child: Padding(
-                                  padding: EdgeInsets.all( width * 15),
+                                  padding: EdgeInsets.all( width! * 15),
                                   child: Text(
                                     '25% OFF',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 )),
                             Positioned(
-                              top: height * 180,
-                              left: width *20,
+                              top: height! * 180,
+                              left: width! *20,
                               child: Card(
                                 margin: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width!*20)),
                                 color: Colors.white,
                                 child: Padding(
-                                  padding: EdgeInsets.all( width * 15),
+                                  padding: EdgeInsets.all( width! * 15),
                                   child: Text(    'Pick up in 15 min',
                                     style: TextStyle(color: Colors.black),),
                                 ),
@@ -317,8 +317,8 @@ class Pickup extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: width * 600,
-                      padding: EdgeInsets.symmetric(horizontal: width * 10),
+                      width: width! * 600,
+                      padding: EdgeInsets.symmetric(horizontal: width! * 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
@@ -329,7 +329,7 @@ class Pickup extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  items.storeName,
+                                  items.storeName!,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
@@ -337,7 +337,7 @@ class Pickup extends StatelessWidget {
                                   children: [
                                     Icon(
                                       Icons.star,
-                                      size: width * 45,
+                                      size: width! * 45,
                                       color: Colors.purple,
                                     ),
                                     Text(
@@ -358,7 +358,7 @@ class Pickup extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(3),
                             child: Text(
-                              items.storeAddress,
+                              items.storeAddress!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.normal,
@@ -392,7 +392,7 @@ class Pickup extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: width * 15, vertical: height * 5),
+              horizontal: width! * 15, vertical: height! * 5),
           child: Text(
             'All Stores',
             style: TextStyle(
@@ -402,7 +402,7 @@ class Pickup extends StatelessWidget {
         ),
         Flexible(
           child: ListView.builder(
-            padding: EdgeInsets.only(bottom: height * 15),
+            padding: EdgeInsets.only(bottom: height! * 15),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
@@ -414,62 +414,62 @@ class Pickup extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: height * 250,
+                    height: height! * 250,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: width * 10, vertical: height * 10),
+                          horizontal: width! * 10, vertical: height! * 10),
                       child: Stack(
                         children: [
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.purple.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(width * 15),
+                              borderRadius: BorderRadius.circular(width! * 15),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image:
-                                    CachedNetworkImageProvider(items.imageURL),
+                                    CachedNetworkImageProvider(items.imageURL!),
                               ),
                             ),
                           ),
                           Card(
-                              margin: EdgeInsets.only(top: width*20),
+                              margin: EdgeInsets.only(top: width!*20),
                               shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(width * 20),
-                                bottomRight: Radius.circular(width * 20),
+                                topRight: Radius.circular(width! * 20),
+                                bottomRight: Radius.circular(width! * 20),
                               ),
                               ),
                               color: Colors.purple,
                               child: Padding(
-                                padding: EdgeInsets.all( width * 15),
+                                padding: EdgeInsets.all( width! * 15),
                                 child: Text(
                                   '25% OFF + Cookie Treats',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )),
                           Card(
-                              margin: EdgeInsets.only(top: width*100),
+                              margin: EdgeInsets.only(top: width!*100),
                               shape: RoundedRectangleBorder( borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(width * 20),
-                                bottomRight: Radius.circular(width * 20),
+                                topRight: Radius.circular(width! * 20),
+                                bottomRight: Radius.circular(width! * 20),
                               ),
                               ),
                               color: Colors.purple,
                               child: Padding(
-                                padding: EdgeInsets.all( width * 15),
+                                padding: EdgeInsets.all( width! * 15),
                                 child: Text(
                                   'FEATURED',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )),
                           Positioned(
-                            top: height * 180,
-                            left: width *20,
+                            top: height! * 180,
+                            left: width! *20,
                             child: Card(
                               margin: EdgeInsets.zero,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width*20)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width!*20)),
                               color: Colors.white,
                               child: Padding(
-                                padding: EdgeInsets.all( width * 15),
+                                padding: EdgeInsets.all( width! * 15),
                                 child: Text(    'Pick up in 15 min',
                                   style: TextStyle(color: Colors.black),),
                               ),
@@ -481,7 +481,7 @@ class Pickup extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * 10),
+                    padding: EdgeInsets.symmetric(horizontal: width! * 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -492,7 +492,7 @@ class Pickup extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                items.storeName,
+                                items.storeName!,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
@@ -500,7 +500,7 @@ class Pickup extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    size: width * 45,
+                                    size: width! * 45,
                                     color: Colors.purple,
                                   ),
                                   Text(
@@ -521,7 +521,7 @@ class Pickup extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(3),
                           child: Text(
-                            items.storeAddress,
+                            items.storeAddress!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,

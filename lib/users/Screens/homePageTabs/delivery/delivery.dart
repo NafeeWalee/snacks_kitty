@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-// import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/modelClass.dart';
 import 'package:pure.international.snackskitty.customer/users/Screens/menuScreen/menuList/menuList.dart';
 import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
 import 'deliveryModel.dart';
 
 class Delivery extends StatelessWidget {
   final GetSizeConfig getSizeConfig = Get.find();
-  double width;
-  double height;
+  double? width = 0.0;
+  double? height = 0.0;
 
   setInitialScreenSize() {
     width = getSizeConfig.width.value;
@@ -32,7 +31,7 @@ class Delivery extends StatelessWidget {
           children: [
             searchFilter(),
             Padding(
-              padding: EdgeInsets.only(left: width * 20),
+              padding: EdgeInsets.only(left: width! * 20),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,12 +54,12 @@ class Delivery extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: width * 20, vertical: height * 10),
+              horizontal: width! * 20, vertical: height! * 10),
           child: Card(
             elevation: 6,
             child: Container(
-              width: width * 750,
-              height: width * 150,
+              width: width! * 750,
+              height: width! * 150,
               child: TextField(
                 controller: search,
                 focusNode: searchNode,
@@ -79,33 +78,33 @@ class Delivery extends StatelessWidget {
                     ),
                     border: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20)),
+                        borderRadius: BorderRadius.circular(width! * 20)),
                     disabledBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20)),
+                        borderRadius: BorderRadius.circular(width! * 20)),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20)),
+                        borderRadius: BorderRadius.circular(width! * 20)),
                     errorBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20)),
+                        borderRadius: BorderRadius.circular(width! * 20)),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20)),
+                        borderRadius: BorderRadius.circular(width! * 20)),
                     focusedErrorBorder: OutlineInputBorder(
                         borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width * 20))),
+                        borderRadius: BorderRadius.circular(width! * 20))),
               ),
             ),
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 5),
+          padding: EdgeInsets.symmetric(horizontal: width! * 5),
           child: Card(
             elevation: 6,
             child: Container(
-              width: width * 150,
-              height: width * 150,
+              width: width! * 150,
+              height: width! * 150,
               child: Icon(
                 Icons.add_road_outlined,
                 color: Colors.purple,
@@ -119,10 +118,10 @@ class Delivery extends StatelessWidget {
 
   Container promo() {
     return Container(
-      margin: EdgeInsets.only(bottom: height * 10),
-      height: height * 270,
+      margin: EdgeInsets.only(bottom: height! * 10),
+      height: height! * 270,
       child: ListView.builder(
-          padding: EdgeInsets.only(right: width * 30),
+          padding: EdgeInsets.only(right: width! * 30),
           physics: ClampingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: promoClass.length,
@@ -130,18 +129,18 @@ class Delivery extends StatelessWidget {
             PromoClass items = promoClass[index];
             return Padding(
               padding: EdgeInsets.symmetric(
-                  horizontal: width * 10, vertical: height * 15),
+                  horizontal: width! * 10, vertical: height! * 15),
               child: Container(
                 decoration: BoxDecoration(
                   color: Colors.purple.withOpacity(0.3),
-                  borderRadius: BorderRadius.circular(width * 15),
+                  borderRadius: BorderRadius.circular(width! * 15),
                   image: DecorationImage(
                     fit: BoxFit.cover,
                     image:
-                        CachedNetworkImageProvider(items.imageURL),
+                        CachedNetworkImageProvider(items.imageURL!),
                   ),
                 ),
-                width: width * 350,
+                width: width! * 350,
               ),
             );
           }),
@@ -150,14 +149,14 @@ class Delivery extends StatelessWidget {
 
   Padding favourite() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: height * 15),
+      padding: EdgeInsets.symmetric(vertical: height! * 15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: width * 15, vertical: height * 5),
+                horizontal: width! * 15, vertical: height! * 5),
             child: Text(
               'Kitty Favourites',
               style: TextStyle(
@@ -166,9 +165,9 @@ class Delivery extends StatelessWidget {
             ),
           ),
           Container(
-            height: height * 350,
+            height: height! * 350,
             child: ListView.builder(
-              padding: EdgeInsets.only(right: width * 30),
+              padding: EdgeInsets.only(right: width! * 30),
               physics: ClampingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: favoriteClass.length,
@@ -177,7 +176,7 @@ class Delivery extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
 
-                    print(items.productCategoryList[0].productList);
+                    print(items.productCategoryList![0].productList);
                     print(items.productCategoryList);
                     Get.to(MenuScreen(
                       items: items,
@@ -188,36 +187,36 @@ class Delivery extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: height * 250,
+                        height: height! * 250,
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: width * 10, vertical: height * 10),
+                              horizontal: width! * 10, vertical: height! * 10),
                           child: Stack(
                             children: [
                               Container(
-                                width: width * 600,
+                                width: width! * 600,
                                 decoration: BoxDecoration(
                                   color: Colors.purple.withOpacity(0.3),
                                 ),
                                 child: Hero(
-                                  tag: items.imageURL,
+                                  tag: items.imageURL!,
                                   child: CachedNetworkImage(
-                                    imageUrl: items.imageURL,
+                                    imageUrl: items.imageURL!,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
                               Card(
-                                  margin: EdgeInsets.only(top: width * 20),
+                                  margin: EdgeInsets.only(top: width! * 20),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(width * 20),
-                                      bottomRight: Radius.circular(width * 20),
+                                      topRight: Radius.circular(width! * 20),
+                                      bottomRight: Radius.circular(width! * 20),
                                     ),
                                   ),
                                   color: Colors.purple,
                                   child: Padding(
-                                    padding: EdgeInsets.all(width * 15),
+                                    padding: EdgeInsets.all(width! * 15),
                                     child: Text(
                                       '25% OFF',
                                       style: TextStyle(color: Colors.white),
@@ -225,16 +224,16 @@ class Delivery extends StatelessWidget {
                                   ),
                               ),
                               Positioned(
-                                top: height * 180,
-                                left: width * 20,
+                                top: height! * 180,
+                                left: width! * 20,
                                 child: Card(
                                   margin: EdgeInsets.zero,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(width * 20)),
+                                          BorderRadius.circular(width! * 20)),
                                   color: Colors.white,
                                   child: Padding(
-                                    padding: EdgeInsets.all(width * 15),
+                                    padding: EdgeInsets.all(width! * 15),
                                     child: Text(
                                       '20 min',
                                       style: TextStyle(color: Colors.black),
@@ -247,8 +246,8 @@ class Delivery extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: width * 600,
-                        padding: EdgeInsets.symmetric(horizontal: width * 10),
+                        width: width! * 600,
+                        padding: EdgeInsets.symmetric(horizontal: width! * 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
@@ -260,7 +259,7 @@ class Delivery extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    items.storeName,
+                                    items.storeName!,
                                     overflow: TextOverflow.ellipsis,
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
@@ -269,7 +268,7 @@ class Delivery extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.star,
-                                        size: width * 45,
+                                        size: width! * 45,
                                         color: Colors.purple,
                                       ),
                                       Text(
@@ -290,7 +289,7 @@ class Delivery extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(3),
                               child: Text(
-                                items.storeAddress,
+                                items.storeAddress!,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
@@ -320,14 +319,14 @@ class Delivery extends StatelessWidget {
 
   Padding newProducts() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: height * 15),
+      padding: EdgeInsets.symmetric(vertical: height! * 15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: width * 15, vertical: height * 5),
+                horizontal: width! * 15, vertical: height! * 5),
             child: Text(
               'New On SnacksKitty',
               style: TextStyle(
@@ -336,9 +335,9 @@ class Delivery extends StatelessWidget {
             ),
           ),
           Container(
-            height: height * 350,
+            height: height! * 350,
             child: ListView.builder(
-              padding: EdgeInsets.only(right: width * 30),
+              padding: EdgeInsets.only(right: width! * 30),
               physics: ClampingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: newItems.length,
@@ -349,51 +348,51 @@ class Delivery extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: height * 250,
+                      height: height! * 250,
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            horizontal: width * 10, vertical: height * 10),
+                            horizontal: width! * 10, vertical: height! * 10),
                         child: Stack(
                           children: [
                             Container(
                               decoration: BoxDecoration(
                                 color: Colors.purple.withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(width * 15),
+                                borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: CachedNetworkImageProvider(
-                                      items.imageURL),
+                                      items.imageURL!),
                                 ),
                               ),
-                              width: width * 600,
+                              width: width! * 600,
                             ),
                             Card(
-                                margin: EdgeInsets.only(top: width * 20),
+                                margin: EdgeInsets.only(top: width! * 20),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(width * 20),
-                                    bottomRight: Radius.circular(width * 20),
+                                    topRight: Radius.circular(width! * 20),
+                                    bottomRight: Radius.circular(width! * 20),
                                   ),
                                 ),
                                 color: Colors.purple,
                                 child: Padding(
-                                  padding: EdgeInsets.all(width * 15),
+                                  padding: EdgeInsets.all(width! * 15),
                                   child: Text(
                                     '25% OFF',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                 )),
                             Positioned(
-                              top: height * 180,
-                              left: width * 20,
+                              top: height! * 180,
+                              left: width! * 20,
                               child: Card(
                                 margin: EdgeInsets.zero,
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
-                                        BorderRadius.circular(width * 20)),
+                                        BorderRadius.circular(width! * 20)),
                                 color: Colors.white,
                                 child: Padding(
-                                  padding: EdgeInsets.all(width * 15),
+                                  padding: EdgeInsets.all(width! * 15),
                                   child: Text(
                                     '20 min',
                                     style: TextStyle(color: Colors.black),
@@ -406,8 +405,8 @@ class Delivery extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: width * 600,
-                      padding: EdgeInsets.symmetric(horizontal: width * 10),
+                      width: width! * 600,
+                      padding: EdgeInsets.symmetric(horizontal: width! * 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
@@ -418,7 +417,7 @@ class Delivery extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  items.storeName,
+                                  items.storeName!,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
@@ -426,7 +425,7 @@ class Delivery extends StatelessWidget {
                                   children: [
                                     Icon(
                                       Icons.star,
-                                      size: width * 45,
+                                      size: width! * 45,
                                       color: Colors.purple,
                                     ),
                                     Text(
@@ -447,7 +446,7 @@ class Delivery extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(3),
                             child: Text(
-                              items.storeAddress,
+                              items.storeAddress!,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.normal,
@@ -481,7 +480,7 @@ class Delivery extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: width * 15, vertical: height * 5),
+              horizontal: width! * 15, vertical: height! * 5),
           child: Text(
             'All Stores',
             style: TextStyle(
@@ -491,7 +490,7 @@ class Delivery extends StatelessWidget {
         ),
         Flexible(
           child: ListView.builder(
-            padding: EdgeInsets.only(bottom: height * 15),
+            padding: EdgeInsets.only(bottom: height! * 15),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
@@ -503,66 +502,66 @@ class Delivery extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: height * 250,
+                    height: height! * 250,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: width * 10, vertical: height * 10),
+                          horizontal: width! * 10, vertical: height! * 10),
                       child: Stack(
                         children: [
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.purple.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(width * 15),
+                              borderRadius: BorderRadius.circular(width! * 15),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image:
-                                    CachedNetworkImageProvider(items.imageURL),
+                                    CachedNetworkImageProvider(items.imageURL!),
                               ),
                             ),
                           ),
                           Card(
-                              margin: EdgeInsets.only(top: width * 20),
+                              margin: EdgeInsets.only(top: width! * 20),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20),
+                                  topRight: Radius.circular(width! * 20),
+                                  bottomRight: Radius.circular(width! * 20),
                                 ),
                               ),
                               color: Colors.purple,
                               child: Padding(
-                                padding: EdgeInsets.all(width * 15),
+                                padding: EdgeInsets.all(width! * 15),
                                 child: Text(
                                   '25% OFF + Cookie Treats',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )),
                           Card(
-                              margin: EdgeInsets.only(top: width * 100),
+                              margin: EdgeInsets.only(top: width! * 100),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(width * 20),
-                                  bottomRight: Radius.circular(width * 20),
+                                  topRight: Radius.circular(width! * 20),
+                                  bottomRight: Radius.circular(width! * 20),
                                 ),
                               ),
                               color: Colors.purple,
                               child: Padding(
-                                padding: EdgeInsets.all(width * 15),
+                                padding: EdgeInsets.all(width! * 15),
                                 child: Text(
                                   'FEATURED',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               )),
                           Positioned(
-                            top: height * 180,
-                            left: width * 20,
+                            top: height! * 180,
+                            left: width! * 20,
                             child: Card(
                               margin: EdgeInsets.zero,
                               shape: RoundedRectangleBorder(
                                   borderRadius:
-                                      BorderRadius.circular(width * 20)),
+                                      BorderRadius.circular(width! * 20)),
                               color: Colors.white,
                               child: Padding(
-                                padding: EdgeInsets.all(width * 15),
+                                padding: EdgeInsets.all(width! * 15),
                                 child: Text(
                                   '20 min',
                                   style: TextStyle(color: Colors.black),
@@ -575,7 +574,7 @@ class Delivery extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: width * 10),
+                    padding: EdgeInsets.symmetric(horizontal: width! * 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -586,7 +585,7 @@ class Delivery extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                items.storeName,
+                                items.storeName!,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
@@ -594,7 +593,7 @@ class Delivery extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.star,
-                                    size: width * 45,
+                                    size: width! * 45,
                                     color: Colors.purple,
                                   ),
                                   Text(
@@ -615,7 +614,7 @@ class Delivery extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(3),
                           child: Text(
-                            items.storeAddress,
+                            items.storeAddress!,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,

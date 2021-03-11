@@ -12,8 +12,8 @@ class TitleDescriptionText extends StatelessWidget {
   final String description;
 
   TitleDescriptionText({
-    @required this.title,
-    @required this.description,
+    required this.title,
+    required this.description,
 });
 
   @override

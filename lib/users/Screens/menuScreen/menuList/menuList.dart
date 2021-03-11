@@ -8,7 +8,7 @@ import 'package:pure.international.snackskitty.customer/users/Screens/modelClass
 class MenuScreen extends StatefulWidget {
   final HomepageModelClass items;
 
-  MenuScreen({@required this.items});
+  MenuScreen({required this.items});
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
@@ -18,8 +18,8 @@ class _MenuScreenState extends State<MenuScreen> {
   ScrollController _scrollController = ScrollController();
 
   final GetSizeConfig getSizeConfig = Get.find();
-  double width;
-  double height;
+  double? width;
+  double? height;
 
   final maxExtent = 200.0;
   double currentExtent = 0.0;
@@ -85,11 +85,11 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   getData() {
-    categoryData.addAll(widget.items.productCategoryList);
+    categoryData.addAll(widget.items.productCategoryList!);
 
     for (categories = 0; categories < categoryData.length; categories++) {
       for (products = 0; products < categories; products++){
-        productData.addAll(categoryData[categories].productList);
+        productData.addAll(categoryData[categories].productList!);
       }
 
       if(breakPoint.isEmpty){
@@ -117,43 +117,43 @@ class _MenuScreenState extends State<MenuScreen> {
                 children: [
                   Container(
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(width * 500),
+                          borderRadius: BorderRadius.circular(width! * 500),
                           color: Colors.white),
                       child: IconButtonConstraints(
-                        size: width * 90,
+                        size: width! * 90,
                         color: Colors.purple,
                         icon: Icons.arrow_back,
                         function: () {
                           Get.back();
                         },
-                        iconSize: width * 70,
+                        iconSize: width! * 70,
                       )),
                   Row(
                     children: [
                       Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(width * 500),
+                              borderRadius: BorderRadius.circular(width! * 500),
                               color: Colors.white),
                           child: IconButtonConstraints(
-                            size: width * 90,
+                            size: width! * 90,
                             color: Colors.purple,
                             icon: Icons.share_outlined,
                             function: () {},
-                            iconSize: width * 70,
+                            iconSize: width! * 70,
                           )),
                       SizedBox(
-                        width: width * 30,
+                        width: width! * 30,
                       ),
                       Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(width * 500),
+                              borderRadius: BorderRadius.circular(width! * 500),
                               color: Colors.white),
                           child: IconButtonConstraints(
-                            size: width * 90,
+                            size: width! * 90,
                             color: Colors.purple,
                             icon: Icons.info_outline,
                             function: () {},
-                            iconSize: width * 70,
+                            iconSize: width! * 70,
                           )),
                     ],
                   )
@@ -166,7 +166,7 @@ class _MenuScreenState extends State<MenuScreen> {
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Text(
-                  widget.items.storeName,
+                  widget.items.storeName!,
                   style: TextStyle(
                       color: showTitle ? Colors.white : Colors.transparent),
                 ),
@@ -174,9 +174,9 @@ class _MenuScreenState extends State<MenuScreen> {
                   children: [
                     Center(
                       child: Hero(
-                        tag: widget.items.imageURL,
+                        tag: widget.items.imageURL!,
                         child: CachedNetworkImage(
-                          imageUrl: widget.items.imageURL,
+                          imageUrl: widget.items.imageURL!,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -185,24 +185,24 @@ class _MenuScreenState extends State<MenuScreen> {
                       color: Colors.black.withOpacity(0.6),
                     ),
                     Positioned(
-                      top: height * 170,
-                      left: width * 100,
+                      top: height! * 170,
+                      left: width! * 100,
                       child: Container(
-                        width: width * 800,
-                        height: height * 200,
+                        width: width! * 800,
+                        height: height! * 200,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              widget.items.storeName,
+                              widget.items.storeName!,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: getSizeConfig.getPixels(32),
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: height * 20,
+                              height: height! * 20,
                             ),
                             Card(
                               margin: EdgeInsets.zero,
@@ -210,10 +210,10 @@ class _MenuScreenState extends State<MenuScreen> {
                                   side: BorderSide(
                                       color: Colors.white, width: 2.0),
                                   borderRadius:
-                                      BorderRadius.circular(width * 40)),
+                                      BorderRadius.circular(width! * 40)),
                               color: Colors.black.withOpacity(0.3),
                               child: Padding(
-                                padding: EdgeInsets.all(width * 25),
+                                padding: EdgeInsets.all(width! * 25),
                                 child: Text(
                                   'Delivery: 20 min',
                                   style: TextStyle(color: Colors.white),
@@ -221,14 +221,14 @@ class _MenuScreenState extends State<MenuScreen> {
                               ),
                             ),
                             SizedBox(
-                              height: height * 10,
+                              height: height! * 10,
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
                                   Icons.star,
-                                  size: width * 45,
+                                  size: width! * 45,
                                   color: Colors.white,
                                 ),
                                 Text(
@@ -255,21 +255,21 @@ class _MenuScreenState extends State<MenuScreen> {
             ),
             SliverPersistentHeader(
               delegate: _SliverAppBarDelegate(
-                  maxH: height * 80,
-                  minH: height * 80,
+                  maxH: height! * 80,
+                  minH: height! * 80,
                   container: Container(
-                    height: height * 80,
-                    width: height * 80,
+                    height: height! * 80,
+                    width: height! * 80,
                     child: ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight: height * 80,
+                        maxHeight: height! * 80,
                       ),
                       child: ListView.builder(
                           itemCount: categoryData.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return FlatButton(
-                              padding: EdgeInsets.zero,
+                            return TextButton(
+                              style: TextButton.styleFrom(padding: EdgeInsets.zero,),
                               onPressed: () {
                                 setState(() {
                                   selectedIndex = index;
@@ -287,13 +287,13 @@ class _MenuScreenState extends State<MenuScreen> {
                                             ? Colors.purple
                                             : Colors.transparent),
                                   )),
-                                  height: height * 80,
+                                  height: height! * 80,
                                   child: ConstrainedBox(
                                     constraints: BoxConstraints(
-                                      minWidth: width * 220,
+                                      minWidth: width! * 220,
                                     ),
                                     child: Text(
-                                      categoryData[index].categoryName,
+                                      categoryData[index].categoryName!,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           color: selectedIndex == index
@@ -334,45 +334,45 @@ class _MenuScreenState extends State<MenuScreen> {
                 //print(lineBreaker);
 
                 return Padding(
-                  padding: EdgeInsets.only(bottom: height * 20),
+                  padding: EdgeInsets.only(bottom: height! * 20),
                   child: Container(
-                    width: width * 1000,
-                    height: height * 200,
+                    width: width! * 1000,
+                    height: height! * 200,
                     color: Colors.white,
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          vertical: height * 20, horizontal: width * 35),
+                          vertical: height! * 20, horizontal: width! * 35),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            categoryData[0].categoryName,
+                            categoryData[0].categoryName!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: getSizeConfig.getPixels(30)),
                           ),
                           SizedBox(
-                            height: height * 10,
+                            height: height! * 10,
                           ),
                           Text(
-                            items.itemName,
+                            items.itemName!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: getSizeConfig.getPixels(16)),
                           ),
                           Text(
-                            items.details,
+                            items.details!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.normal,
                                 fontSize: getSizeConfig.getPixels(14)),
                           ),
                           SizedBox(
-                            height: height * 10,
+                            height: height! * 10,
                           ),
                           Text(
                             'Tk ${items.price.toString()}',
@@ -394,10 +394,10 @@ class _MenuScreenState extends State<MenuScreen> {
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final TabBar tabBar;
-  final Container container;
-  final double minH;
-  final double maxH;
+  final TabBar? tabBar;
+  final Container? container;
+  final double? minH;
+  final double? maxH;
 
   _SliverAppBarDelegate({this.tabBar, this.container, this.maxH, this.minH});
 
@@ -427,10 +427,10 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => tabBar.preferredSize.height;*/
 
   @override
-  double get maxExtent => maxH;
+  double get maxExtent => maxH!;
 
   @override
-  double get minExtent => minH;
+  double get minExtent => minH!;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {

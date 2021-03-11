@@ -12,15 +12,15 @@ class SearchTextField extends StatelessWidget {
   final String hintText;
   final Function onSubmitted;
   SearchTextField({
-    @required this.controller,
-    @required this.onSubmitted,
-    @required this.hintText
+    required this.controller,
+    required this.onSubmitted,
+    required this.hintText
 });
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      onEditingComplete: onSubmitted,
+      onEditingComplete: onSubmitted as void Function()?,
       textInputAction: TextInputAction.search,
       decoration: InputDecoration(
         hintText: hintText,

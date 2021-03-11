@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 
 class DrawerLessAppBar extends StatelessWidget implements PreferredSizeWidget{
-  final Widget widget;
+  final Widget? widget;
   DrawerLessAppBar({
     this.widget
   });
@@ -26,7 +26,7 @@ class DrawerLessAppBar extends StatelessWidget implements PreferredSizeWidget{
       ),
       actions: [
         widget == null ? SizedBox() :
-        widget
+        widget!
       ],
     );
   }

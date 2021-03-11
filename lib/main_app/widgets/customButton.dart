@@ -6,23 +6,27 @@ import 'package:pure.international.snackskitty.customer/main_app/utils/controlle
 class CustomButton extends StatelessWidget {
   final String title;
   final Function function;
-  final IconData icon;
-  final IconData iconTrailing;
-  final Color color;
-  final double width;
-  final double height;
-  final double textSize;
-  final double radius;
-  CustomButton({this.iconTrailing,@required this.title, @required this.function, this.icon, this.color,this.width,this.height,this.textSize,this.radius});
+  final IconData? icon;
+  final IconData? iconTrailing;
+  final Color? color;
+  final double? width;
+  final double? height;
+  final double? textSize;
+  final double? radius;
+  CustomButton({this.iconTrailing,required this.title, required this.function, this.icon, this.color,this.width,this.height,this.textSize,this.radius});
 
   final GetSizeConfig sizeConfigController = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      onPressed: function,
-      color: color?? Colors.black,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius??sizeConfigController.width*20)),
+    return TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: color?? Colors.black,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(radius??sizeConfigController.width*20)
+        ),
+      ),
+      onPressed: function as void Function()?,
       child: Container(
         height: height??sizeConfigController.height * 70,
         width: width??sizeConfigController.width * 1000,

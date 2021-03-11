@@ -5,9 +5,9 @@ import 'package:pure.international.snackskitty.customer/main_app/utils/controlle
 
 class AppBarText extends StatelessWidget {
   final String title;
-  final Color color;
+  final Color? color;
   AppBarText({
-    @required this.title,
+    required this.title,
     this.color
 });
 

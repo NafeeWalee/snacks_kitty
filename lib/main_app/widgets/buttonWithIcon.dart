@@ -6,21 +6,21 @@ class PatButton extends StatelessWidget {
 
   final GetSizeConfig sizeConfig = Get.find();
 
-  final IconData icon;
+  final IconData? icon;
   final String label;
   final Function onPressed;
 
   PatButton({
     this.icon,
-    @required this.label,
-    @required this.onPressed,
+    required this.label,
+    required this.onPressed,
 });
 
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: onPressed as void Function()?,
       borderRadius: BorderRadius.circular(1111),
       child: Card(
         shape: RoundedRectangleBorder(

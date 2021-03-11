@@ -4,20 +4,20 @@ import 'package:get/get.dart';
 
 class LogoutDialog{
 
-  final String title;
-  final String logoutText;
-  final String cancelText;
+  final String? title;
+  final String? logoutText;
+  final String? cancelText;
 
   final double width;
   final double height;
 
-  final Color positiveColor;
-  final Color negativeColor;
+  final Color? positiveColor;
+  final Color? negativeColor;
 
   final Function onPositivePress;
-  final Function onNegativePress;
+  final Function? onNegativePress;
 
-  LogoutDialog({this.title, this.logoutText, this.cancelText, @required this.height, @required this.width, this.negativeColor, this.positiveColor, this.onNegativePress, @required this.onPositivePress});
+  LogoutDialog({this.title, this.logoutText, this.cancelText, required this.height, required this.width, this.negativeColor, this.positiveColor, this.onNegativePress, required this.onPositivePress});
 
 
   void showCustomDialog(BuildContext context){
@@ -41,11 +41,13 @@ class LogoutDialog{
                 SizedBox(
                   height: height * 40,
                 ),
-                FlatButton(
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: positiveColor??Colors.red,
+                  ),
                   onPressed: () {
                     onPositivePress();
                   },
-                  color: positiveColor??Colors.red,
                   child: Container(
                     height: height * 65,
                     width: double.infinity,
@@ -63,11 +65,12 @@ class LogoutDialog{
                 SizedBox(
                   height: height * 20,
                 ),
-                FlatButton(
+                TextButton(
+                  style: TextButton.styleFrom(backgroundColor: negativeColor??Colors.black),
+
                   onPressed: () {
                     onNegativePress ?? Get.back();
                   },
-                  color: negativeColor??Colors.black,
                   child: Container(
                     height: height * 65,
                     width: double.infinity,

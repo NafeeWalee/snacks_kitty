@@ -8,8 +8,8 @@ class UnderLinedText extends StatelessWidget {
   UnderLinedText({
     this.padding = 0.0,
     this.color = Colors.black,
-    @required this.text,
-    @required this.size
+    required this.text,
+    required this.size
   });
   @override
   Widget build(BuildContext context) {

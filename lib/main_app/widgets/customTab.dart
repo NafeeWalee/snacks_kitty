@@ -12,8 +12,8 @@ class CustomTab extends StatelessWidget {
   final bool isActive;
   final String label;
   CustomTab({
-    @required this.isActive,
-    @required this.label
+    required this.isActive,
+    required this.label
 });
   @override
   Widget build(BuildContext context) {

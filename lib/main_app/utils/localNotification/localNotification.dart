@@ -33,8 +33,8 @@ class LocalNotification {
         payload: 'Minions Has Spawned!');
   }
 
-  static Future notificationSelected(String payload) async {
-    Get.snackbar('Notification', payload,
+  static Future notificationSelected(String? payload) async {
+    Get.snackbar('Notification', payload!,
         backgroundColor: Colors.black,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM);

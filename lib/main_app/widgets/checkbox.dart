@@ -7,8 +7,8 @@ class NoPaddingCheckbox extends StatelessWidget {
   final Color color;
 
   NoPaddingCheckbox({
-    @required this.isMarked,
-    @required this.onChange,
+    required this.isMarked,
+    required this.onChange,
     this.size = 24,
     this.color = Colors.black
   });

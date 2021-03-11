@@ -12,11 +12,11 @@ class LightTextField extends StatelessWidget {
   final bool suffix;
   final bool obscure;
   final inputFormatter;
-  final Color hintColor;
+  final Color? hintColor;
   final int minLines;
   final int maxLines;
   LightTextField({
-    @required this.hintText,
+    required this.hintText,
     this.enabled = false,
     this.suffix = false,
     this.obscure = false,
@@ -25,7 +25,7 @@ class LightTextField extends StatelessWidget {
     this.maxLines = 10,
     this.textInputType = TextInputType.text,
     this.hintColor,
-    @required this.controller
+    required this.controller
 });
   @override
   Widget build(BuildContext context) {

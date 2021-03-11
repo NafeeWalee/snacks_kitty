@@ -11,9 +11,9 @@ class DummyPage extends StatefulWidget {
 }
 
 class _DummyPageState extends State<DummyPage> {
-  double height;
+  double? height;
 
-  double width;
+  double? width;
 
 
   GetSizeConfig getSizeConfig = Get.find();

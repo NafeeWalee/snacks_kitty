@@ -5,13 +5,13 @@ import 'package:pure.international.snackskitty.customer/main_app/widgets/iconBut
 
 class ContainerHeader extends StatelessWidget {
   final double height,width;
-  final Function function;
+  final Function? function;
   final String title;
-  final bool shadow;
-  final String subTitle;
-  final List<Widget> widget;
-  final Color color;
-  ContainerHeader({this.function,this.widget,this.subTitle,@required this.title,this.color,this.shadow,@required this.width,@required this.height});
+  final bool? shadow;
+  final String? subTitle;
+  final List<Widget>? widget;
+  final Color? color;
+  ContainerHeader({this.function,this.widget,this.subTitle,required this.title,this.color,this.shadow,required this.width,required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +40,10 @@ class ContainerHeader extends StatelessWidget {
               child:
               IconButtonConstraints(
                 icon: Icons.arrow_back,
-                function: () {function();},
+                function: () {function!();},
                 size: width*60,
                 color: Colors.black,
+                iconSize: width*60,
               ),
             ) : SizedBox(),
             Column(
@@ -59,7 +60,7 @@ class ContainerHeader extends StatelessWidget {
                   height: height*7,
                 ),
                 subTitle == null ? SizedBox() : Text(
-                  subTitle,
+                  subTitle!,
                   style: TextStyle(
                       fontSize: width*14,
                       color: Colors.black.withOpacity(.7)
@@ -68,7 +69,7 @@ class ContainerHeader extends StatelessWidget {
               ],
             ),
             widget != null ? Spacer() : SizedBox(),
-            widget != null ? Row(children: widget) : SizedBox(),
+            widget != null ? Row(children: widget!) : SizedBox(),
           ],
         ),
       ),

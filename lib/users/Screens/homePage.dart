@@ -2,16 +2,16 @@ import 'dart:io';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/services.dart';
 import 'package:connectivity/connectivity.dart';
 import 'dart:async';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
-import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/delivery/delivery.dart';
-import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/pickup/pickup.dart';
-import 'file:///C:/Users/nafee/AndroidStudioProjects/SnacksKitty/lib/users/Screens/homePageTabs/shops/shops.dart';
+
+import 'homePageTabs/delivery/delivery.dart';
+import 'homePageTabs/pickup/pickup.dart';
+import 'homePageTabs/shops/shops.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -25,16 +25,16 @@ class _HomePageState extends State<HomePage>
   bool get wantKeepAlive => true;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   GetSizeConfig getSizeConfig = Get.find();
-  double width;
-  double height;
+  double? width;
+  double? height;
 
-  bool hasConnection;
-  Future _dialog;
+  bool? hasConnection;
+  Future? _dialog;
   var currentStatus;
   final Connectivity _connectivity = Connectivity();
-  StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  StreamSubscription<ConnectivityResult>? _connectivitySubscription;
 
-  TabController tabController;
+  TabController? tabController;
   int tabIndex = 0;
 
   List<Widget> screens = [
@@ -49,13 +49,10 @@ class _HomePageState extends State<HomePage>
     } else {
       super.initState();
       setInitialScreenSize();
-      initConnectivity();
-
+     // initConnectivity();
+     // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
       tabController = TabController(length: 3, vsync: this);
-      tabController.addListener(_handleTabSelection);
-
-      _connectivitySubscription =
-          _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+      tabController!.addListener(_handleTabSelection);
     }
   }
 
@@ -66,7 +63,7 @@ class _HomePageState extends State<HomePage>
   @override
   void dispose() {
     _connectivitySubscription?.cancel();
-    tabController.dispose();
+    tabController!.dispose();
     super.dispose();
   }
 
@@ -85,7 +82,7 @@ class _HomePageState extends State<HomePage>
   }
 
   Future initConnectivity() async {
-    ConnectivityResult result;
+    ConnectivityResult? result;
     try {
       result = await _connectivity.checkConnectivity();
     } on PlatformException catch (e) {
@@ -115,13 +112,13 @@ class _HomePageState extends State<HomePage>
         print(currentStatus.toString());
         break;
     }
-    var connection = await checkConnection();
+    var connection = await (checkConnection() as FutureOr<bool>);
     if (!connection) {
       Get.snackbar('Connection Issue', 'Fluctuating Network Detected!',
           backgroundColor: Colors.black,
           colorText: Colors.white,
           margin: EdgeInsets.only(
-              bottom: height * 20, left: width * 15, right: width * 15),
+              bottom: height! * 20, left: width! * 15, right: width! * 15),
           snackPosition: SnackPosition.BOTTOM);
     } else {
      // LocalNotification.showNotification('SnacksKitty', 'Welcome home, nyah!!');
@@ -130,29 +127,41 @@ class _HomePageState extends State<HomePage>
   }
 
   Future showDialog() {
-    return AwesomeDialog(
+    return Alert(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.WARNING,
-      body: Center(
+      style: alertStyle,
+      type: AlertType.warning,
+      content: Center(
         child: Text(
           'No connection to Internet found!',
           style: TextStyle(fontStyle: FontStyle.italic),
         ),
       ),
       title: 'Network Issue',
-      desc: 'No Stable connection found!',
-      btnOkText: 'Settings',
-      btnOkOnPress: () {
-        AppSettings.openWIFISettings();
-      },
-      btnCancelText: 'Exit',
-      btnCancelOnPress: () {
-        SystemChannels.platform.invokeMethod('SystemNavigator.pop', true);
-      },
-      dismissOnTouchOutside: false,
-      dismissOnBackKeyPress: false,
-      onDissmissCallback: () {
+      desc: 'No connection to Internet found!',
+      buttons: [
+        DialogButton(
+          child: Text(
+            "Settings",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () =>  AppSettings.openWIFISettings(),
+          color: Color.fromRGBO(0, 179, 134, 1.0),
+        ),
+        DialogButton(
+          child: Text(
+            "Exit",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop', true),
+          gradient: LinearGradient(colors: [
+            Color.fromRGBO(116, 116, 191, 1.0),
+            Color.fromRGBO(52, 138, 199, 1.0)
+          ]),
+        )
+      ],
+      onWillPopActive: false,
+      closeFunction: (){
         print('callback result: ${currentStatus.toString()}');
         if (ConnectivityResult.none == currentStatus) {
           _dialog = showDialog();
@@ -162,8 +171,26 @@ class _HomePageState extends State<HomePage>
       },
     ).show();
   }
+  var alertStyle = AlertStyle(
+    animationType: AnimationType.grow,
+    isCloseButton: false,
+    isOverlayTapDismiss: false,
+    descStyle: TextStyle(fontWeight: FontWeight.bold),
+    descTextAlign: TextAlign.start,
+    animationDuration: Duration(milliseconds: 400),
+    alertBorder: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(0.0),
+      side: BorderSide(
+        color: Colors.grey,
+      ),
+    ),
+    titleStyle: TextStyle(
+      color: Colors.red,
+    ),
+    alertAlignment: Alignment.topCenter,
+  );
 
-  Future<bool> checkConnection() async {
+  Future<bool?> checkConnection() async {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
@@ -197,16 +224,16 @@ class _HomePageState extends State<HomePage>
               children: [
                 IconButtonConstraints(
                     function: () {
-                      if(scaffoldKey.currentState.isDrawerOpen){
-                        scaffoldKey.currentState.openEndDrawer();
+                      if(scaffoldKey.currentState!.isDrawerOpen){
+                        scaffoldKey.currentState!.openEndDrawer();
                       }else{
-                        scaffoldKey.currentState.openDrawer();
+                        scaffoldKey.currentState!.openDrawer();
                       }
                     },
                     icon: Icons.dehaze,
                     color: Colors.purple,
-                    size: 30),
-                SizedBox(width: width*50,height: height*10,),
+                    size: 30, iconSize: 30,),
+                SizedBox(width: width!*50,height: height!*10,),
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -231,8 +258,8 @@ class _HomePageState extends State<HomePage>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: width*1000,
-                  height: height*400,
+                  width: width!*1000,
+                  height: height!*400,
                   decoration: BoxDecoration(
                     color: Colors.purple,
                   ),
@@ -250,7 +277,7 @@ class _HomePageState extends State<HomePage>
                        ),
                      ))
                 ),
-               FlatButton(
+               TextButton(
                  onPressed: (){
 
                  },
@@ -260,7 +287,7 @@ class _HomePageState extends State<HomePage>
                  ),
 
                ),
-                FlatButton(
+                TextButton(
                   onPressed: (){
 
                   },
@@ -270,7 +297,7 @@ class _HomePageState extends State<HomePage>
                   ),
 
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: (){
 
                   },
@@ -279,7 +306,7 @@ class _HomePageState extends State<HomePage>
                   ),
 
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: (){
 
                   },
@@ -307,7 +334,7 @@ class _HomePageState extends State<HomePage>
               Expanded(
                 child: IndexedStack(
                   children: screens,
-                  index: tabController.index,
+                  index: tabController!.index,
                 ),
               ),
             ],

@@ -6,7 +6,7 @@ class StarRating extends StatelessWidget {
   final double rating;
   final double size;
   StarRating({
-    @required this.rating,
+    required this.rating,
     this.size = 20
 });
   @override
