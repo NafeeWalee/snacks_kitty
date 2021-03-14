@@ -175,9 +175,6 @@ class Delivery extends StatelessWidget {
                 HomepageModelClass items = favoriteClass[index];
                 return GestureDetector(
                   onTap: () {
-
-                    print(items.productCategoryList![0].productList);
-                    print(items.productCategoryList);
                     Get.to(MenuScreen(
                       items: items,
                     ));

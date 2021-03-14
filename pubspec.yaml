@@ -25,6 +25,7 @@ dev_dependencies:
   flutter_dotenv: ^4.0.0-nullsafety.0
   rflutter_alert: ^2.0.2
   flutter_rating_bar: ^4.0.0
+  scrollable_positioned_list: ^0.2.0-nullsafety.0
 
   #GetX
   get: ^4.0.0-nullsafety.2
