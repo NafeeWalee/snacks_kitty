@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pure.international.snackskitty.customer/main_app/resources/appConst.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:pure.international.snackskitty.customer/main_app/widgets/customScrollListView/scrollable_list_tabview.dart';
-import 'package:pure.international.snackskitty.customer/main_app/widgets/loader.dart';
-import 'package:pure.international.snackskitty.customer/main_app/widgets/snackBar.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/widgets/customScrollListView/scrollable_list_tabview.dart';
+import 'package:pure_snackskitty/main_app/widgets/loader.dart';
+import 'package:pure_snackskitty/main_app/widgets/snackBar.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 
 class MenuScreen extends StatefulWidget {
   final HomepageModelClass items;
@@ -33,7 +33,6 @@ class _MenuScreenState extends State<MenuScreen> {
   List<ProductList> productData = [];
   List<int> breakPoint = [];
 
-
   setInitialScreenSize() {
     width = getSizeConfig.width.value;
     height = getSizeConfig.height.value;
@@ -41,7 +40,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   int categories = 0;
   int products = 0;
-
 
   @override
   void initState() {
@@ -52,12 +50,11 @@ class _MenuScreenState extends State<MenuScreen> {
       setInitialScreenSize();
       getData();
       scrollListener();
-      Future.delayed(Duration(milliseconds: 600),(){
-        setState((){
-        foodsLoading= false;
+      Future.delayed(Duration(milliseconds: 1000), () {
+        setState(() {
+          foodsLoading = false;
         });
       });
-
     }
   }
 
@@ -69,14 +66,14 @@ class _MenuScreenState extends State<MenuScreen> {
 
   scrollListener() {
     _scrollController.addListener(() {
-      if(_scrollController.offset > Get.height * .4){
-        if(!safeArea){
+      if (_scrollController.offset > Get.height * .4) {
+        if (!safeArea) {
           setState(() {
             safeArea = true;
           });
         }
-      }else{
-        if(safeArea){
+      } else {
+        if (safeArea) {
           setState(() {
             safeArea = false;
           });
@@ -87,7 +84,6 @@ class _MenuScreenState extends State<MenuScreen> {
 
   getData() {
     categoryData.addAll(widget.items.productCategoryList!);
-
     for (categories = 0; categories < categoryData.length; categories++) {
       for (products = 0; products < categories; products++){
         productData.addAll(categoryData[categories].productList!);
@@ -95,20 +91,18 @@ class _MenuScreenState extends State<MenuScreen> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: safeArea ? AppConst.blue : Colors.transparent,
+        backgroundColor: safeArea ? AppConst.purple : Colors.transparent,
         elevation: 0,
         title: AnimatedCrossFade(
-          firstChild: Text(
-              widget.items.storeName!.trim().capitalize!
-          ),
+          firstChild: Text(widget.items.storeName!.trim().capitalize!),
           secondChild: SizedBox(),
           duration: Duration(milliseconds: 200),
-          crossFadeState: safeArea ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+          crossFadeState:
+              safeArea ? CrossFadeState.showFirst : CrossFadeState.showSecond,
         ),
       ),
       extendBodyBehindAppBar: true,
@@ -118,28 +112,21 @@ class _MenuScreenState extends State<MenuScreen> {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverList(
-                delegate: SliverChildListDelegate(
-                    [
-                      _buildRestaurantInfo()
-                    ]
-                ),
+                delegate: SliverChildListDelegate([_buildRestaurantInfo()]),
               ),
             ];
           },
           body: SafeArea(
             top: safeArea,
-            child: foodsLoading ?
-            Loader()
-                :
-            _buildRestaurantFoods(),
-          )
+            child: foodsLoading ? Loader() : _buildRestaurantFoods(),
+          ),
       ),
     );
   }
 
-  _buildRestaurantInfo(){
+  _buildRestaurantInfo() {
     return Container(
-      height: Get.height*.5,
+      height: Get.height * .5,
       child: Column(
         children: [
           Expanded(
@@ -151,12 +138,17 @@ class _MenuScreenState extends State<MenuScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                         image: DecorationImage(
-                            image: CachedNetworkImageProvider(
-                                widget.items.imageURL!
-                            ),
-                            fit: BoxFit.cover
-                        )
-                    ),
+                            image: CachedNetworkImageProvider(widget.items.imageURL!),
+                            fit: BoxFit.cover)),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [Colors.black,Colors.black.withOpacity(0.1)]
+                    )
                   ),
                 ),
                 Container(
@@ -177,10 +169,11 @@ class _MenuScreenState extends State<MenuScreen> {
                               style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white
-                              ),
+                                  color: Colors.white),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -193,9 +186,7 @@ class _MenuScreenState extends State<MenuScreen> {
                                 Expanded(
                                   child: Text(
                                     widget.items.storeAddress!,
-                                    style: TextStyle(
-                                        color: Colors.grey[200]
-                                    ),
+                                    style: TextStyle(color: Colors.grey[200]),
                                   ),
                                 )
                               ],
@@ -208,7 +199,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         color: Colors.white38,
                       ),
                       Container(
-                        height: Get.height*.07,
+                        height: Get.height * .07,
                         width: Get.width,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -219,7 +210,8 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: Center(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -229,23 +221,22 @@ class _MenuScreenState extends State<MenuScreen> {
                                           size: 20,
                                           color: Colors.white,
                                         ),
-                                        SizedBox(width: 5,),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
                                         Text(
                                           'Price',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
                                               fontSize: 18,
-                                              height: 1.4
-                                          ),
+                                              height: 1.4),
                                         )
                                       ],
                                     ),
                                     Text(
-                                      ' ${widget.items.productCategoryList![0].productList![0].price!}',
-                                      style: TextStyle(
-                                          color: Colors.grey[200]
-                                      ),
+                                      ' ${widget.items.expense} expense',
+                                      style: TextStyle(color: Colors.grey[200]),
                                     )
                                   ],
                                 ),
@@ -263,7 +254,8 @@ class _MenuScreenState extends State<MenuScreen> {
                               child: Center(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -273,23 +265,22 @@ class _MenuScreenState extends State<MenuScreen> {
                                           size: 20,
                                           color: Colors.white,
                                         ),
-                                        SizedBox(width: 5,),
+                                        SizedBox(
+                                          width: 5,
+                                        ),
                                         Text(
                                           'Foods',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.white,
                                               fontSize: 18,
-                                              height: 1.4
-                                          ),
+                                              height: 1.4),
                                         )
                                       ],
                                     ),
                                     Text(
-                                      ' ${widget.items.rate.toString().padLeft(2,'0')} Items',
-                                      style: TextStyle(
-                                          color: Colors.grey[200]
-                                      ),
+                                      ' ${productData.length} Items',
+                                      style: TextStyle(color: Colors.grey[200]),
                                     )
                                   ],
                                 ),
@@ -303,19 +294,20 @@ class _MenuScreenState extends State<MenuScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                if(widget.items.review! == 0){
-                                  Snack.top('Sorry!', 'This restaurant has to reviews yet');
-                                }else{
-
-                                }
+                                if (widget.items.review! == 0) {
+                                  Snack.top('Sorry!',
+                                      'This restaurant has to reviews yet');
+                                } else {}
                               },
                               child: Container(
                                 height: double.infinity,
                                 width: Get.width * .33,
                                 child: Center(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -325,23 +317,23 @@ class _MenuScreenState extends State<MenuScreen> {
                                             size: 20,
                                             color: Colors.white,
                                           ),
-                                          SizedBox(width: 5,),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
                                           Text(
                                             '${widget.items.rate!.toStringAsFixed(1)}',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white,
                                                 fontSize: 18,
-                                                height: 1.4
-                                            ),
+                                                height: 1.4),
                                           )
                                         ],
                                       ),
                                       Text(
                                         ' ${widget.items.review!} Ratings',
-                                        style: TextStyle(
-                                            color: Colors.grey[200]
-                                        ),
+                                        style:
+                                            TextStyle(color: Colors.grey[200]),
                                       )
                                     ],
                                   ),
@@ -360,8 +352,8 @@ class _MenuScreenState extends State<MenuScreen> {
           Expanded(
             flex: 19,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-              color: AppConst.blue,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              color: AppConst.purple,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -373,16 +365,12 @@ class _MenuScreenState extends State<MenuScreen> {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white
-                        ),
+                            color: Colors.white),
                       ),
                       Expanded(
                         child: Text(
-                          'No description given.',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12
-                          ),
+                          'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow :3',
+                          style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       )
                     ],
@@ -396,15 +384,15 @@ class _MenuScreenState extends State<MenuScreen> {
     );
   }
 
-  _buildRestaurantFoods(){
+  _buildRestaurantFoods() {
     return GestureDetector(
-      onVerticalDragDown: (details){
-        if(details.localPosition.dx > details.localPosition.dy){
-          if(safeArea){
+      onVerticalDragDown: (details) {
+        if (details.localPosition.dx > details.localPosition.dy) {
+          if (safeArea) {
             _scrollController.jumpTo(0);
           }
-        }else{
-          if(!safeArea){
+        } else {
+          if (!safeArea) {
             _scrollController.jumpTo(Get.height * .5);
           }
         }
@@ -414,77 +402,146 @@ class _MenuScreenState extends State<MenuScreen> {
         bodyAnimationDuration: const Duration(milliseconds: 150),
         tabAnimationCurve: Curves.easeOut,
         tabAnimationDuration: const Duration(milliseconds: 200),
-        tabs: categoryData.map((category) => ScrollableListTab(
-            tab: ListTab(
-              icon: SizedBox(),
-              label: category.categoryName!.trim().capitalize!,
-              activeBackgroundColor: AppConst.blue,
-              borderColor: Colors.transparent,
-            ),
-            body: ListView.builder(
-              padding: EdgeInsets.zero,
-              shrinkWrap: true,
-                itemCount: productData.length,
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                itemBuilder: (context, index) {
-                  ProductList items = productData[index];
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: height! * 20),
-                    child: Container(
-                      width: width! * 1000,
-                      height: height! * 200,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: height! * 20, horizontal: width! * 35),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              categoryData[0].categoryName!,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: getSizeConfig.getPixels(30)),
+        tabs: categoryData
+            .map((category) => ScrollableListTab(
+                tab: ListTab(
+                  icon: SizedBox(),
+                  label: category.categoryName!.trim().capitalize!,
+                  activeBackgroundColor: AppConst.purple,
+                  borderColor: Colors.transparent,
+                ),
+                body: ListView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    itemCount: category.productList!.length,
+                    physics: NeverScrollableScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      ProductList items = category.productList![index];
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: height! * 20),
+                        child: Container(
+                          width: width! * 1000,
+                          height: height! * 200,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                              bottom: BorderSide(color: Colors.grey.withOpacity(0.3), width: 1),
                             ),
-                            SizedBox(
-                              height: height! * 10,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: height! * 20,
+                                horizontal: width! * 35),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: width! * 300,
+                                  height: width! * 300,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                       Column(
+                                         crossAxisAlignment: CrossAxisAlignment.start,
+                                         mainAxisSize: MainAxisSize.min,
+                                         children: [
+                                           Padding(
+                                             padding: EdgeInsets.symmetric(vertical: 3),
+                                             child: Text(
+                                               items.itemName!,
+                                               style: TextStyle(
+                                                   color: Colors.black,
+                                                   fontWeight: FontWeight.bold,
+                                                   fontSize:
+                                                   getSizeConfig.getPixels(20)),
+                                             ),
+                                           ),
+                                           Padding(
+                                             padding: EdgeInsets.symmetric(vertical: 3),
+                                             child: Text(
+                                               items.details!,
+                                               style: TextStyle(
+                                                   color: Colors.black,
+                                                   fontWeight: FontWeight.normal,
+                                                   fontSize:
+                                                   getSizeConfig.getPixels(14)),
+                                             ),
+                                           ),
+                                         ],
+                                       ),
+                                      Card(
+                                        margin: EdgeInsets.only(top: width! * 20),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(width! * 20)),
+                                        ),
+                                        color: Colors.purple,
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(Icons.local_fire_department,color: Colors.white,size: width!*50,),
+                                            Padding(
+                                              padding: EdgeInsets.all(width! * 15),
+                                              child: Text(
+                                                'Popular',
+                                                style: TextStyle(color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 3),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              'Tk ${(items.price!/2).toString()}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+
+                                                  fontSize:
+                                                      getSizeConfig.getPixels(16)),
+                                            ),
+                                            SizedBox(width: 10),
+                                            Text(
+                                              'Tk ${items.price.toString()}',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.normal,
+                                                  decoration: TextDecoration.lineThrough,
+                                                  fontSize:
+                                                      getSizeConfig.getPixels(16)),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Container(
+                                    width: width! * 300,
+                                    height: width! * 300,
+                                    child: Image(
+                                      image: CachedNetworkImageProvider(items.imageURL!),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
-                            Text(
-                              items.itemName!,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: getSizeConfig.getPixels(16)),
-                            ),
-                            Text(
-                              items.details!,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: getSizeConfig.getPixels(14)),
-                            ),
-                            SizedBox(
-                              height: height! * 10,
-                            ),
-                            Text(
-                              'Tk ${items.price.toString()}',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: getSizeConfig.getPixels(16)),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                  );
-                })
-        )).toList(),
+                      );
+                    })))
+            .toList(),
       ),
     );
   }
 }
-

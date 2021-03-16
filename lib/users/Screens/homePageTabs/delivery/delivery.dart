@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/menuScreen/menuList/menuList.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/users/Screens/menuScreen/menuList/menuList.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 import 'deliveryModel.dart';
 
 class Delivery extends StatelessWidget {
@@ -74,7 +76,7 @@ class Delivery extends StatelessWidget {
                     hintText: 'Find catto foodo',
                     prefixIcon: Icon(
                       Icons.search,
-                      color: Colors.purple,
+                      color: AppConst.purple,
                     ),
                     border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -107,7 +109,7 @@ class Delivery extends StatelessWidget {
               height: width! * 150,
               child: Icon(
                 Icons.add_road_outlined,
-                color: Colors.purple,
+                color: AppConst.purple,
               ),
             ),
           ),
@@ -132,7 +134,7 @@ class Delivery extends StatelessWidget {
                   horizontal: width! * 10, vertical: height! * 15),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.purple.withOpacity(0.3),
+                  color: AppConst.purple.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(width! * 15),
                   image: DecorationImage(
                     fit: BoxFit.cover,
@@ -175,7 +177,7 @@ class Delivery extends StatelessWidget {
                 HomepageModelClass items = favoriteClass[index];
                 return GestureDetector(
                   onTap: () {
-                    Get.to(MenuScreen(
+                    Get.to(()=>MenuScreen(
                       items: items,
                     ));
                   },
@@ -193,7 +195,7 @@ class Delivery extends StatelessWidget {
                               Container(
                                 width: width! * 600,
                                 decoration: BoxDecoration(
-                                  color: Colors.purple.withOpacity(0.3),
+                                  color: AppConst.purple.withOpacity(0.3),
                                 ),
                                 child: Hero(
                                   tag: items.imageURL!,
@@ -211,7 +213,7 @@ class Delivery extends StatelessWidget {
                                       bottomRight: Radius.circular(width! * 20),
                                     ),
                                   ),
-                                  color: Colors.purple,
+                                  color: AppConst.purple,
                                   child: Padding(
                                     padding: EdgeInsets.all(width! * 15),
                                     child: Text(
@@ -266,7 +268,7 @@ class Delivery extends StatelessWidget {
                                       Icon(
                                         Icons.star,
                                         size: width! * 45,
-                                        color: Colors.purple,
+                                        color: AppConst.purple,
                                       ),
                                       Text(
                                         items.rate.toString(),
@@ -286,7 +288,7 @@ class Delivery extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(3),
                               child: Text(
-                                items.storeAddress!,
+                                '${items.expense!} ${items.storeAddress!}',
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
@@ -353,7 +355,7 @@ class Delivery extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.purple.withOpacity(0.3),
+                                color: AppConst.purple.withOpacity(0.3),
                                 borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
@@ -371,7 +373,7 @@ class Delivery extends StatelessWidget {
                                     bottomRight: Radius.circular(width! * 20),
                                   ),
                                 ),
-                                color: Colors.purple,
+                                color: AppConst.purple,
                                 child: Padding(
                                   padding: EdgeInsets.all(width! * 15),
                                   child: Text(
@@ -423,7 +425,7 @@ class Delivery extends StatelessWidget {
                                     Icon(
                                       Icons.star,
                                       size: width! * 45,
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                     ),
                                     Text(
                                       items.rate.toString(),
@@ -443,7 +445,7 @@ class Delivery extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(3),
                             child: Text(
-                              items.storeAddress!,
+                              '${items.expense!} ${items.storeAddress!}',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.normal,
@@ -507,7 +509,7 @@ class Delivery extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.3),
+                              color: AppConst.purple.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(width! * 15),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
@@ -524,7 +526,7 @@ class Delivery extends StatelessWidget {
                                   bottomRight: Radius.circular(width! * 20),
                                 ),
                               ),
-                              color: Colors.purple,
+                              color: AppConst.purple,
                               child: Padding(
                                 padding: EdgeInsets.all(width! * 15),
                                 child: Text(
@@ -540,7 +542,7 @@ class Delivery extends StatelessWidget {
                                   bottomRight: Radius.circular(width! * 20),
                                 ),
                               ),
-                              color: Colors.purple,
+                              color: AppConst.purple,
                               child: Padding(
                                 padding: EdgeInsets.all(width! * 15),
                                 child: Text(
@@ -591,7 +593,7 @@ class Delivery extends StatelessWidget {
                                   Icon(
                                     Icons.star,
                                     size: width! * 45,
-                                    color: Colors.purple,
+                                    color: AppConst.purple,
                                   ),
                                   Text(
                                     items.rate.toString(),
@@ -611,7 +613,7 @@ class Delivery extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(3),
                           child: Text(
-                            items.storeAddress!,
+                            '${items.expense!} ${items.storeAddress!}',
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,

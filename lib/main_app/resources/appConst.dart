@@ -14,6 +14,7 @@ class AppConst{
   static final Color? greyLight = Colors.grey[300];
   static const Color pink = Color(0xffe54577);
   static const Color teal = Color(0xff3ad7d9);
+  static const Color purple = Colors.purple;
 
   static final Color textTitleColor = Color(0xff14213d);
   static final Color? textBodyColor = Colors.grey[500];

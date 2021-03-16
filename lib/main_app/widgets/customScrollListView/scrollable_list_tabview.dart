@@ -2,7 +2,7 @@ library scrollable_list_tabview;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pure.international.snackskitty.customer/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
 import 'model/scrollable_list_tab.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 export 'model/list_tab.dart';

@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:connectivity/connectivity.dart';
 import 'dart:async';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
-import 'package:pure.international.snackskitty.customer/main_app/widgets/iconButton.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/main_app/widgets/iconButton.dart';
 
 import 'homePageTabs/delivery/delivery.dart';
 import 'homePageTabs/pickup/pickup.dart';

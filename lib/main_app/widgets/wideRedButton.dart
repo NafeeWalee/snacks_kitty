@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pure.international.snackskitty.customer/main_app/resources/appConst.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 
 
 class WideRedButton extends StatelessWidget {

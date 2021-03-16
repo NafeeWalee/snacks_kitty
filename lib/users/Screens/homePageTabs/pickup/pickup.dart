@@ -2,11 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePageTabs/pickup/pickupModel.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/users/Screens/homePageTabs/pickup/pickupModel.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 
 class Pickup extends StatelessWidget {
   final GetSizeConfig getSizeConfig = Get.find();
@@ -77,7 +78,7 @@ class Pickup extends StatelessWidget {
                                 child: Text(
                                   'Show map',
                                   style: TextStyle(
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                       fontWeight: FontWeight.normal,
                                       fontSize: getSizeConfig.getPixels(12)),
                                 ),
@@ -85,7 +86,7 @@ class Pickup extends StatelessWidget {
 
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Icon(Icons.arrow_forward_ios_outlined,color: Colors.purple,size: width!*40,),
+                                child: Icon(Icons.arrow_forward_ios_outlined,color: AppConst.purple,size: width!*40,),
                               )
                             ],
                           ) ,
@@ -189,7 +190,7 @@ class Pickup extends StatelessWidget {
                           hintText: 'Find catto foodo nearo',
                           prefixIcon: Icon(
                             Icons.search,
-                            color: Colors.purple,
+                            color: AppConst.purple,
                           ),
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
@@ -222,7 +223,7 @@ class Pickup extends StatelessWidget {
                     height: width! * 150,
                     child: Icon(
                       Icons.add_road_outlined,
-                      color: Colors.purple,
+                      color: AppConst.purple,
                     ),
                   ),
                 ),
@@ -273,7 +274,7 @@ class Pickup extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.purple.withOpacity(0.3),
+                                color: AppConst.purple.withOpacity(0.3),
                                 borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
@@ -290,7 +291,7 @@ class Pickup extends StatelessWidget {
                                   bottomRight: Radius.circular(width! * 20),
                                 ),
                                 ),
-                                color: Colors.purple,
+                                color: AppConst.purple,
                                 child: Padding(
                                   padding: EdgeInsets.all( width! * 15),
                                   child: Text(
@@ -338,7 +339,7 @@ class Pickup extends StatelessWidget {
                                     Icon(
                                       Icons.star,
                                       size: width! * 45,
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                     ),
                                     Text(
                                       items.rate.toString(),
@@ -358,7 +359,7 @@ class Pickup extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(3),
                             child: Text(
-                              items.storeAddress!,
+                              '${items.expense!} ${items.storeAddress!}',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.normal,
@@ -422,7 +423,7 @@ class Pickup extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.3),
+                              color: AppConst.purple.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(width! * 15),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
@@ -438,7 +439,7 @@ class Pickup extends StatelessWidget {
                                 bottomRight: Radius.circular(width! * 20),
                               ),
                               ),
-                              color: Colors.purple,
+                              color: AppConst.purple,
                               child: Padding(
                                 padding: EdgeInsets.all( width! * 15),
                                 child: Text(
@@ -453,7 +454,7 @@ class Pickup extends StatelessWidget {
                                 bottomRight: Radius.circular(width! * 20),
                               ),
                               ),
-                              color: Colors.purple,
+                              color: AppConst.purple,
                               child: Padding(
                                 padding: EdgeInsets.all( width! * 15),
                                 child: Text(
@@ -501,7 +502,7 @@ class Pickup extends StatelessWidget {
                                   Icon(
                                     Icons.star,
                                     size: width! * 45,
-                                    color: Colors.purple,
+                                    color: AppConst.purple,
                                   ),
                                   Text(
                                     items.rate.toString(),
@@ -521,7 +522,7 @@ class Pickup extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.all(3),
                           child: Text(
-                            items.storeAddress!,
+                            '${items.expense!} ${items.storeAddress!}',
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: FontWeight.normal,

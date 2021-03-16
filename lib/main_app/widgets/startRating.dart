@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:pure.international.snackskitty.customer/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
 
 class StarRating extends StatelessWidget {
   final double rating;

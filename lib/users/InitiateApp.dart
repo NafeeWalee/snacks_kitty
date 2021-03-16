@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/homePage.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/users/Screens/homePage.dart';
 class InitiateApp extends StatelessWidget {
 
   @override

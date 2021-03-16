@@ -1,6 +1,6 @@
 
 
-import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 
 List<ProductCategory> productCategory = [
   ProductCategory(

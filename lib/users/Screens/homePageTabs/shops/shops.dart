@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pure.international.snackskitty.customer/main_app/utils/controller/sizeConfig.dart';
+import 'package:pure_snackskitty/main_app/resources/appConst.dart';
+import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:pure.international.snackskitty.customer/users/Screens/modelClass.dart';
+import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 
 import 'shopsModel.dart';
 
@@ -74,7 +75,7 @@ class Shops extends StatelessWidget {
                     hintText: 'Find catto shopo',
                     prefixIcon: Icon(
                       Icons.search,
-                      color: Colors.purple,
+                      color: AppConst.purple,
                     ),
                     border: OutlineInputBorder(
                         borderSide: BorderSide.none,
@@ -107,7 +108,7 @@ class Shops extends StatelessWidget {
               height: width! * 150,
               child: Icon(
                 Icons.add_road_outlined,
-                color: Colors.purple,
+                color: AppConst.purple,
               ),
             ),
           ),
@@ -132,7 +133,7 @@ class Shops extends StatelessWidget {
                   horizontal: width! * 10, vertical: height! * 15),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.purple.withOpacity(0.3),
+                  color: AppConst.purple.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(width! * 15),
                   image: DecorationImage(
                     fit: BoxFit.cover,
@@ -318,7 +319,7 @@ class Shops extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Colors.purple.withOpacity(0.3),
+                                color: AppConst.purple.withOpacity(0.3),
                                 borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
@@ -335,7 +336,7 @@ class Shops extends StatelessWidget {
                                   bottomRight: Radius.circular(width! * 20),
                                 ),
                                 ),
-                                color: Colors.purple,
+                                color: AppConst.purple,
                                 child: Padding(
                                   padding: EdgeInsets.all( width! * 15),
                                   child: Text(
@@ -350,7 +351,7 @@ class Shops extends StatelessWidget {
                                     bottomRight: Radius.circular(width! * 20),
                                 ),
                                 ),
-                                color: Colors.purple,
+                                color: AppConst.purple,
                                 child: Padding(
                                   padding: EdgeInsets.all( width! * 15),
                                   child: Text(
@@ -399,7 +400,7 @@ class Shops extends StatelessWidget {
                                     Icon(
                                       Icons.star,
                                       size: width! * 45,
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                     ),
                                     Text(
                                       items.rate.toString(),
@@ -419,7 +420,7 @@ class Shops extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.all(3),
                             child: Text(
-                              items.storeAddress!,
+                              '${items.expense!} ${items.storeAddress!}',
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontWeight: FontWeight.normal,
@@ -571,7 +572,7 @@ class Shops extends StatelessWidget {
                                   padding: EdgeInsets.symmetric(
                                       vertical: height! * 5,horizontal: width!*15),
                                   child: Text(
-                                    items.storeAddress!,
+                                    '${items.expense!} ${items.storeAddress!}',
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -587,7 +588,7 @@ class Shops extends StatelessWidget {
                                   fit: FlexFit.loose,
                                   child: Card(
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width!*30)),
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                       child: Padding(
                                         padding: EdgeInsets.all( width! * 15),
                                         child: Text(
@@ -599,7 +600,7 @@ class Shops extends StatelessWidget {
                                   fit: FlexFit.loose,
                                   child: Card(
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width!*30)),
-                                      color: Colors.purple,
+                                      color: AppConst.purple,
                                       child: Padding(
                                         padding: EdgeInsets.all( width! * 15),
                                         child: Text(
