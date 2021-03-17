@@ -72,7 +72,7 @@ packages:
     source: hosted
     version: "1.15.0"
   connectivity:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: connectivity
       url: "https://pub.dartlang.org"
@@ -207,76 +207,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-  gql:
-    dependency: transitive
-    description:
-      name: gql
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.0-nullsafety.2"
-  gql_dedupe_link:
-    dependency: transitive
-    description:
-      name: gql_dedupe_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0-nullsafety.1"
-  gql_error_link:
-    dependency: transitive
-    description:
-      name: gql_error_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0-nullsafety.1"
-  gql_exec:
-    dependency: transitive
-    description:
-      name: gql_exec
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0-nullsafety.2"
-  gql_http_link:
-    dependency: transitive
-    description:
-      name: gql_http_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0-nullsafety.1"
-  gql_link:
-    dependency: transitive
-    description:
-      name: gql_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.0-nullsafety.2"
-  gql_transform_link:
-    dependency: transitive
-    description:
-      name: gql_transform_link
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0-nullsafety.1"
-  graphql:
-    dependency: transitive
-    description:
-      name: graphql
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.0-nullsafety.1"
-  graphql_flutter:
-    dependency: "direct dev"
-    description:
-      name: graphql_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.0-nullsafety.1"
-  hive:
-    dependency: transitive
-    description:
-      name: hive
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   http:
     dependency: transitive
     description:
@@ -333,13 +263,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
-  normalize:
-    dependency: transitive
-    description:
-      name: normalize
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.0-nullsafety.0"
   octo_image:
     dependency: transitive
     description:
@@ -402,14 +325,14 @@ packages:
       name: permission_handler
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1+1"
+    version: "6.1.0"
   permission_handler_platform_interface:
     dependency: transitive
     description:
       name: permission_handler_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0+1"
+    version: "3.1.1"
   petitparser:
     dependency: transitive
     description:
@@ -477,14 +400,14 @@ packages:
       name: sqflite
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0+2"
+    version: "2.0.0+3"
   sqflite_common:
     dependency: transitive
     description:
       name: sqflite_common
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0+1"
+    version: "2.0.0+2"
   stack_trace:
     dependency: transitive
     description:
@@ -555,20 +478,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  web_socket_channel:
-    dependency: transitive
-    description:
-      name: web_socket_channel
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   win32:
     dependency: transitive
     description:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.4"
   xdg_directories:
     dependency: transitive
     description:

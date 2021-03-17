@@ -35,11 +35,10 @@ dev_dependencies:
   intl: ^0.17.0
 
   #network
-  #connectivity: ^3.0.2
+  connectivity: ^3.0.2
   app_settings: ^4.1.0
   permission_handler: ^6.0.1+1
   flutter_local_notifications: ^5.0.0-nullsafety.1
-  graphql_flutter: ^5.0.0-nullsafety.1
   cached_network_image: ^3.0.0-nullsafety
 
   #ui insurance
