@@ -5,7 +5,7 @@ import 'package:pure_snackskitty/users/InitiateApp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await load();
+  await dotenv.load(fileName: ".env");
   await GetStorage.init();
   runApp(InitiateApp());
 }

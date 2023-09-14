@@ -13,14 +13,12 @@ import 'homePageTabs/delivery/delivery.dart';
 import 'homePageTabs/pickup/pickup.dart';
 import 'homePageTabs/shops/shops.dart';
 
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin,TickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin, TickerProviderStateMixin {
   @override
   bool get wantKeepAlive => true;
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
@@ -42,6 +40,7 @@ class _HomePageState extends State<HomePage>
     Pickup(),
     Shops(),
   ];
+
   @override
   void initState() {
     if (!mounted) {
@@ -49,8 +48,8 @@ class _HomePageState extends State<HomePage>
     } else {
       super.initState();
       setInitialScreenSize();
-     // initConnectivity();
-     // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+      // initConnectivity();
+      // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
       tabController = TabController(length: 3, vsync: this);
       tabController!.addListener(_handleTabSelection);
     }
@@ -69,12 +68,8 @@ class _HomePageState extends State<HomePage>
 
   setInitialScreenSize() {
     getSizeConfig.setSize(
-      (Get.width -
-              (Get.mediaQuery.padding.left + Get.mediaQuery.padding.right)) /
-          1000,
-      (Get.height -
-              (Get.mediaQuery.padding.top + Get.mediaQuery.padding.bottom)) /
-          1000,
+      (Get.width - (Get.mediaQuery.padding.left + Get.mediaQuery.padding.right)) / 1000,
+      (Get.height - (Get.mediaQuery.padding.top + Get.mediaQuery.padding.bottom)) / 1000,
     );
 
     width = getSizeConfig.width.value;
@@ -117,11 +112,10 @@ class _HomePageState extends State<HomePage>
       Get.snackbar('Connection Issue', 'Fluctuating Network Detected!',
           backgroundColor: Colors.black,
           colorText: Colors.white,
-          margin: EdgeInsets.only(
-              bottom: height! * 20, left: width! * 15, right: width! * 15),
+          margin: EdgeInsets.only(bottom: height! * 20, left: width! * 15, right: width! * 15),
           snackPosition: SnackPosition.BOTTOM);
     } else {
-     // LocalNotification.showNotification('SnacksKitty', 'Welcome home, nyah!!');
+      // LocalNotification.showNotification('SnacksKitty', 'Welcome home, nyah!!');
     }
     print('init result: ${currentStatus.toString()}');
   }
@@ -145,7 +139,7 @@ class _HomePageState extends State<HomePage>
             "Settings",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          onPressed: () =>  AppSettings.openWIFISettings(),
+          onPressed: () => AppSettings.openAppSettings(type: AppSettingsType.wifi),
           color: Color.fromRGBO(0, 179, 134, 1.0),
         ),
         DialogButton(
@@ -154,14 +148,11 @@ class _HomePageState extends State<HomePage>
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop', true),
-          gradient: LinearGradient(colors: [
-            Color.fromRGBO(116, 116, 191, 1.0),
-            Color.fromRGBO(52, 138, 199, 1.0)
-          ]),
+          gradient: LinearGradient(colors: [Color.fromRGBO(116, 116, 191, 1.0), Color.fromRGBO(52, 138, 199, 1.0)]),
         )
       ],
       onWillPopActive: false,
-      closeFunction: (){
+      closeFunction: () {
         print('callback result: ${currentStatus.toString()}');
         if (ConnectivityResult.none == currentStatus) {
           _dialog = showDialog();
@@ -171,6 +162,7 @@ class _HomePageState extends State<HomePage>
       },
     ).show();
   }
+
   var alertStyle = AlertStyle(
     animationType: AnimationType.grow,
     isCloseButton: false,
@@ -205,49 +197,52 @@ class _HomePageState extends State<HomePage>
     return hasConnection;
   }
 
-
   @override
   Widget build(BuildContext context) {
     super.build(context);
     return WillPopScope(
-        onWillPop: () async {
-          return Future.value(null);
-        },
-        child: Scaffold(
+      onWillPop: () async {
+        return Future.value(null);
+      },
+      child: Scaffold(
           key: scaffoldKey,
-            drawerEnableOpenDragGesture: false,
-            endDrawerEnableOpenDragGesture: false,
+          drawerEnableOpenDragGesture: false,
+          endDrawerEnableOpenDragGesture: false,
           appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: 10,
             title: Row(
               children: [
                 IconButtonConstraints(
-                    function: () {
-                      if(scaffoldKey.currentState!.isDrawerOpen){
-                        scaffoldKey.currentState!.openEndDrawer();
-                      }else{
-                        scaffoldKey.currentState!.openDrawer();
-                      }
-                    },
-                    icon: Icons.dehaze,
-                    color: Colors.purple,
-                    size: 30, iconSize: 30,),
-                SizedBox(width: width!*50,height: height!*10,),
+                  function: () {
+                    if (scaffoldKey.currentState!.isDrawerOpen) {
+                      scaffoldKey.currentState!.openEndDrawer();
+                    } else {
+                      scaffoldKey.currentState!.openDrawer();
+                    }
+                  },
+                  icon: Icons.dehaze,
+                  color: Colors.purple,
+                  size: 30,
+                  iconSize: 30,
+                ),
+                SizedBox(
+                  width: width! * 50,
+                  height: height! * 10,
+                ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical:4),
+                      padding: EdgeInsets.symmetric(vertical: 4),
                       child: Text(
                         'Home',
                         style: TextStyle(color: Colors.purple),
                       ),
                     ),
-                    Text('420, Big Kitty Castle',
-                        style: TextStyle(color: Colors.black,fontSize: getSizeConfig.getPixels(14))),
+                    Text('420, Big Kitty Castle', style: TextStyle(color: Colors.black, fontSize: getSizeConfig.getPixels(14))),
                   ],
                 )
               ],
@@ -258,62 +253,56 @@ class _HomePageState extends State<HomePage>
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: width!*1000,
-                  height: height!*400,
-                  decoration: BoxDecoration(
-                    color: Colors.purple,
-                  ),
-                 child: Align(
-                   alignment: Alignment.bottomLeft,
-                     child: GestureDetector(
-                       onTap: (){
-
-                       },
-                       child: Padding(
-                         padding: const EdgeInsets.all(8.0),
-                         child: ListTile(
-                           title: Text('Log in/ Create account',style: TextStyle(color: Colors.white,fontSize: getSizeConfig.getPixels(18),fontWeight: FontWeight.bold),),
-                         ),
-                       ),
-                     ))
-                ),
-               TextButton(
-                 onPressed: (){
-
-                 },
-                 child: ListTile(
-                   leading: Icon(Icons.file_present,color: Colors.purple,),
-                   title: Text('Orders'),
-                 ),
-
-               ),
+                    width: width! * 1000,
+                    height: height! * 400,
+                    decoration: BoxDecoration(
+                      color: Colors.purple,
+                    ),
+                    child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              title: Text(
+                                'Log in/ Create account',
+                                style: TextStyle(color: Colors.white, fontSize: getSizeConfig.getPixels(18), fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ))),
                 TextButton(
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                   child: ListTile(
-                    leading: Icon(Icons.help_outline,color: Colors.purple,),
+                    leading: Icon(
+                      Icons.file_present,
+                      color: Colors.purple,
+                    ),
+                    title: Text('Orders'),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: ListTile(
+                    leading: Icon(
+                      Icons.help_outline,
+                      color: Colors.purple,
+                    ),
                     title: Text('Helpline'),
                   ),
-
                 ),
                 TextButton(
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                   child: ListTile(
                     title: Text('Settings'),
                   ),
-
                 ),
                 TextButton(
-                  onPressed: (){
-
-                  },
+                  onPressed: () {},
                   child: ListTile(
                     title: Text('Terms & Conditions/Privacy'),
                   ),
-
                 ),
               ],
             ),
@@ -326,9 +315,15 @@ class _HomePageState extends State<HomePage>
                 indicatorColor: Colors.purple,
                 labelColor: Colors.purple,
                 tabs: [
-                  Tab(text: 'Delivery',),
-                  Tab(text: 'Pick-Up',),
-                  Tab(text: 'Shops',),
+                  Tab(
+                    text: 'Delivery',
+                  ),
+                  Tab(
+                    text: 'Pick-Up',
+                  ),
+                  Tab(
+                    text: 'Shops',
+                  ),
                 ],
               ),
               Expanded(
@@ -338,8 +333,7 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
             ],
-          )
-        ),
+          )),
     );
   }
 }
