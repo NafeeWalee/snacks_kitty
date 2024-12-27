@@ -4,37 +4,37 @@ import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 List<HomepageModelClass> oneStopShopList = [
   HomepageModelClass(
       expense: '\$\$',
-      imageURL: 'https://i.ibb.co/tmttNRV/Gourmet-Perle-Adult-Cat-Food-Mini-Fillets-Pouches.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 10),
+      imageURL: 'https://i.ibb.co/tmttNRV/Gourmet-Perle-Adult-Cat-Food-Mini-Fillets-Pouches.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 10),
   HomepageModelClass(
       expense: '\$',
       imageURL:
-      'https://i.ibb.co/wYmJK9H/5265951.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 180),
+      'https://i.ibb.co/wYmJK9H/5265951.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 180),
   HomepageModelClass(
       expense: '\$\$',
       imageURL:
-      'https://i.ibb.co/qFc9nhK/81-KOyct-RTGL-AC-SY450.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 100),
+      'https://i.ibb.co/qFc9nhK/81-KOyct-RTGL-AC-SY450.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 100),
   HomepageModelClass(
       expense: '\$\$\$',
       imageURL:
-      'https://i.ibb.co/zxfdb1h/810-Svzz-Mlv-L-AC-SY450.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5),
+      'https://i.ibb.co/zxfdb1h/810-Svzz-Mlv-L-AC-SY450.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5),
 ];
 
 List<HomepageModelClass> shopList = [
   HomepageModelClass(
       expense: '\$\$',
-      imageURL: 'https://i.ibb.co/crmwRVP/resize.webp',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 10,promoName: 'KITTY20 or KITTY50'),
+      imageURL: 'https://i.ibb.co/crmwRVP/resize.webp',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 10,promoName: 'KITTY20 or KITTY50'),
   HomepageModelClass(
       expense: '\$',
       imageURL:
-      'https://i.ibb.co/5rrfTfC/7613036051187.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 180,promoName: 'VOUCHER: CASTLE60'),
+      'https://i.ibb.co/5rrfTfC/7613036051187.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 180,promoName: 'VOUCHER: CASTLE60'),
   HomepageModelClass(
       expense: '\$\$',
       imageURL:
-      'https://i.ibb.co/t8gjt3V/s-l400.png',storeName: 'Meow Box', storeAddress: '\$\$ • 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 100,promoName: 'KITTY20 or KITTY50'),
+      'https://i.ibb.co/t8gjt3V/s-l400.png',storeName: 'Meow Box', storeAddress: '\$\$ • 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 100,promoName: 'KITTY20 or KITTY50'),
   HomepageModelClass(
       expense: '\$\$\$',
       imageURL:
-      'https://i.ibb.co/TPP82Bk/51by4b7g-Lk-L-1.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5,promoName: 'KITTY20 or KITTY50'),
+      'https://i.ibb.co/TPP82Bk/51by4b7g-Lk-L-1.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 0,review: 999,rate: 4.5,distance: 5,promoName: 'KITTY20 or KITTY50'),
 ];
 
 List<PromoClass> promoClass = [

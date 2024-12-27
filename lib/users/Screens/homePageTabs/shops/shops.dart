@@ -6,11 +6,19 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 
+import '../../../../main_app/widgets/searchBar.dart';
 import 'shopsModel.dart';
 
-class Shops extends StatelessWidget {
+class Shops extends StatefulWidget {
+  @override
+  State<Shops> createState() => _ShopsState();
+}
+
+class _ShopsState extends State<Shops> {
   final GetSizeConfig getSizeConfig = Get.find();
+
   double? width = 0.0;
+
   double? height = 0.0;
 
   setInitialScreenSize() {
@@ -18,8 +26,9 @@ class Shops extends StatelessWidget {
     height = getSizeConfig.height.value;
   }
 
-  final TextEditingController search = TextEditingController();
-  final FocusNode searchNode = FocusNode();
+  final TextEditingController shopsSearchController = TextEditingController();
+
+  final FocusNode shopsSearchNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,11 @@ class Shops extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            searchFilter(),
+            Searchbar(
+              text: 'Find catto shopo',
+              searchController: shopsSearchController,
+              searchNode: shopsSearchNode,
+            ),
             Padding(
               padding: EdgeInsets.only(left: width! * 20),
               child: Column(
@@ -47,73 +60,6 @@ class Shops extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Row searchFilter() {
-    return Row(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: width! * 20, vertical: height! * 10),
-          child: Card(
-            elevation: 6,
-            child: Container(
-              width: width! * 750,
-              height: width! * 150,
-              child: TextField(
-                controller: search,
-                focusNode: searchNode,
-                onSubmitted: (search) {},
-                style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontSize: getSizeConfig.getPixels(16),
-                    color: Colors.black),
-                textInputAction: TextInputAction.search,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                    hintText: 'Find catto shopo',
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: AppConst.purple,
-                    ),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20))),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: width! * 5),
-          child: Card(
-            elevation: 6,
-            child: Container(
-              width: width! * 150,
-              height: width! * 150,
-              child: Icon(
-                Icons.add_road_outlined,
-                color: AppConst.purple,
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 

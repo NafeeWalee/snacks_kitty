@@ -349,35 +349,30 @@ class _MenuScreenState extends State<MenuScreen> {
               ],
             ),
           ),
-          Expanded(
-            flex: 19,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              color: AppConst.purple,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            color: AppConst.purple,
+            child: RichText(
+              text: TextSpan(
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'About: ',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                      Expanded(
-                        child: Text(
-                          'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow :3',
-                          style: TextStyle(color: Colors.white, fontSize: 14),
-                        ),
-                      )
-                    ],
-                  )
+                  TextSpan(
+                    text: 'About: ',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: widget.items.about!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                  ),
                 ],
               ),
-            ),
+            )
+            ,
           ),
         ],
       ),
@@ -431,14 +426,14 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
-                                vertical: height! * 20,
+                                vertical: height! * 10,
                                 horizontal: width! * 35),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                   width: width! * 300,
-                                  height: width! * 300,
+                                  height: height! * 300,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,

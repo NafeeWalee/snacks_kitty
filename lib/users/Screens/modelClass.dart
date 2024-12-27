@@ -15,8 +15,9 @@ class HomepageModelClass {
   String? promoName;
   String? expense;
   List<ProductCategory>? productCategoryList;
+  String? about;
 
-  HomepageModelClass({this.imageURL,this.storeName,this.deliveryFee,this.rate,this.review,this.storeAddress,this.distance,this.promoName,this.productCategoryList,this.expense});
+  HomepageModelClass({this.imageURL,this.storeName,this.deliveryFee,this.rate,this.review,this.storeAddress,this.distance,this.promoName,this.productCategoryList,this.expense,this.about});
 }
 
 

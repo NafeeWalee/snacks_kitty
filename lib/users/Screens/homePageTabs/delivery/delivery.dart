@@ -6,12 +6,19 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:pure_snackskitty/users/Screens/menuScreen/menuList/menuList.dart';
 import 'package:pure_snackskitty/users/Screens/modelClass.dart';
-import 'package:pure_snackskitty/users/Screens/modelClass.dart';
+import '../../../../main_app/widgets/searchBar.dart';
 import 'deliveryModel.dart';
 
-class Delivery extends StatelessWidget {
+class Delivery extends StatefulWidget {
+  @override
+  State<Delivery> createState() => _DeliveryState();
+}
+
+class _DeliveryState extends State<Delivery> {
   final GetSizeConfig getSizeConfig = Get.find();
+
   double? width = 0.0;
+
   double? height = 0.0;
 
   setInitialScreenSize() {
@@ -19,8 +26,9 @@ class Delivery extends StatelessWidget {
     height = getSizeConfig.height.value;
   }
 
-  TextEditingController search = TextEditingController();
-  FocusNode searchNode = FocusNode();
+  TextEditingController deliverySearchController = TextEditingController();
+
+  FocusNode deliverSearchNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,11 @@ class Delivery extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            searchFilter(),
+            Searchbar(
+              text: 'Find catto foodo',
+              searchController: deliverySearchController,
+              searchNode: deliverSearchNode,
+            ),
             Padding(
               padding: EdgeInsets.only(left: width! * 20),
               child: Column(
@@ -51,73 +63,6 @@ class Delivery extends StatelessWidget {
     );
   }
 
-  Row searchFilter() {
-    return Row(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: width! * 20, vertical: height! * 10),
-          child: Card(
-            elevation: 6,
-            child: Container(
-              width: width! * 750,
-              height: width! * 150,
-              child: TextField(
-                controller: search,
-                focusNode: searchNode,
-                onSubmitted: (search) {},
-                style: TextStyle(
-                    decoration: TextDecoration.none,
-                    fontSize: getSizeConfig.getPixels(16),
-                    color: Colors.black),
-                textInputAction: TextInputAction.search,
-                cursorColor: Colors.black,
-                decoration: InputDecoration(
-                    hintText: 'Find catto foodo',
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: AppConst.purple,
-                    ),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(width! * 20))),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: width! * 5),
-          child: Card(
-            elevation: 6,
-            child: Container(
-              width: width! * 150,
-              height: width! * 150,
-              child: Icon(
-                Icons.add_road_outlined,
-                color: AppConst.purple,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   Container promo() {
     return Container(
       margin: EdgeInsets.only(bottom: height! * 10),
@@ -130,16 +75,14 @@ class Delivery extends StatelessWidget {
           itemBuilder: (context, index) {
             PromoClass items = promoClass[index];
             return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: width! * 10, vertical: height! * 15),
+              padding: EdgeInsets.symmetric(horizontal: width! * 10, vertical: height! * 15),
               child: Container(
                 decoration: BoxDecoration(
                   color: AppConst.purple.withOpacity(0.3),
                   borderRadius: BorderRadius.circular(width! * 15),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image:
-                        CachedNetworkImageProvider(items.imageURL!),
+                    image: CachedNetworkImageProvider(items.imageURL!),
                   ),
                 ),
                 width: width! * 350,
@@ -157,13 +100,10 @@ class Delivery extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: width! * 15, vertical: height! * 5),
+            padding: EdgeInsets.symmetric(horizontal: width! * 15, vertical: height! * 5),
             child: Text(
               'Kitty Favourites',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: getSizeConfig.getPixels(18)),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: getSizeConfig.getPixels(18)),
             ),
           ),
           Container(
@@ -177,9 +117,9 @@ class Delivery extends StatelessWidget {
                 HomepageModelClass items = favoriteClass[index];
                 return GestureDetector(
                   onTap: () {
-                    Get.to(()=>MenuScreen(
-                      items: items,
-                    ));
+                    Get.to(() => MenuScreen(
+                          items: items,
+                        ));
                   },
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
@@ -188,8 +128,7 @@ class Delivery extends StatelessWidget {
                       Container(
                         height: height! * 250,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: width! * 10, vertical: height! * 10),
+                          padding: EdgeInsets.symmetric(horizontal: width! * 10, vertical: height! * 10),
                           child: Stack(
                             children: [
                               Container(
@@ -206,30 +145,28 @@ class Delivery extends StatelessWidget {
                                 ),
                               ),
                               Card(
-                                  margin: EdgeInsets.only(top: width! * 20),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(width! * 20),
-                                      bottomRight: Radius.circular(width! * 20),
-                                    ),
+                                margin: EdgeInsets.only(top: width! * 20),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(width! * 20),
+                                    bottomRight: Radius.circular(width! * 20),
                                   ),
-                                  color: AppConst.purple,
-                                  child: Padding(
-                                    padding: EdgeInsets.all(width! * 15),
-                                    child: Text(
-                                      '25% OFF',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
+                                ),
+                                color: AppConst.purple,
+                                child: Padding(
+                                  padding: EdgeInsets.all(width! * 15),
+                                  child: Text(
+                                    '25% OFF',
+                                    style: TextStyle(color: Colors.white),
                                   ),
+                                ),
                               ),
                               Positioned(
                                 top: height! * 180,
                                 left: width! * 20,
                                 child: Card(
                                   margin: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(width! * 20)),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width! * 20)),
                                   color: Colors.white,
                                   child: Padding(
                                     padding: EdgeInsets.all(width! * 15),
@@ -254,14 +191,12 @@ class Delivery extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.all(2),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     items.storeName!,
                                     overflow: TextOverflow.ellipsis,
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   Row(
                                     children: [
@@ -272,13 +207,11 @@ class Delivery extends StatelessWidget {
                                       ),
                                       Text(
                                         items.rate.toString(),
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                        style: TextStyle(fontWeight: FontWeight.bold),
                                       ),
                                       Text(
                                         '(${items.review.toString()})',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.normal),
+                                        style: TextStyle(fontWeight: FontWeight.normal),
                                       ),
                                     ],
                                   ),
@@ -290,9 +223,7 @@ class Delivery extends StatelessWidget {
                               child: Text(
                                 '${items.expense!} ${items.storeAddress!}',
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.normal,
-                                    fontSize: getSizeConfig.getPixels(14)),
+                                style: TextStyle(fontWeight: FontWeight.normal, fontSize: getSizeConfig.getPixels(14)),
                               ),
                             ),
                             Padding(
@@ -324,13 +255,10 @@ class Delivery extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: width! * 15, vertical: height! * 5),
+            padding: EdgeInsets.symmetric(horizontal: width! * 15, vertical: height! * 5),
             child: Text(
               'New On SnacksKitty',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: getSizeConfig.getPixels(18)),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: getSizeConfig.getPixels(18)),
             ),
           ),
           Container(
@@ -349,8 +277,7 @@ class Delivery extends StatelessWidget {
                     Container(
                       height: height! * 250,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: width! * 10, vertical: height! * 10),
+                        padding: EdgeInsets.symmetric(horizontal: width! * 10, vertical: height! * 10),
                         child: Stack(
                           children: [
                             Container(
@@ -359,8 +286,7 @@ class Delivery extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(width! * 15),
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: CachedNetworkImageProvider(
-                                      items.imageURL!),
+                                  image: CachedNetworkImageProvider(items.imageURL!),
                                 ),
                               ),
                               width: width! * 600,
@@ -386,9 +312,7 @@ class Delivery extends StatelessWidget {
                               left: width! * 20,
                               child: Card(
                                 margin: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.circular(width! * 20)),
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width! * 20)),
                                 color: Colors.white,
                                 child: Padding(
                                   padding: EdgeInsets.all(width! * 15),
@@ -429,13 +353,11 @@ class Delivery extends StatelessWidget {
                                     ),
                                     Text(
                                       items.rate.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                      style: TextStyle(fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       '(${items.review.toString()})',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.normal),
+                                      style: TextStyle(fontWeight: FontWeight.normal),
                                     ),
                                   ],
                                 ),
@@ -447,9 +369,7 @@ class Delivery extends StatelessWidget {
                             child: Text(
                               '${items.expense!} ${items.storeAddress!}',
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  fontSize: getSizeConfig.getPixels(14)),
+                              style: TextStyle(fontWeight: FontWeight.normal, fontSize: getSizeConfig.getPixels(14)),
                             ),
                           ),
                           Padding(
@@ -478,13 +398,10 @@ class Delivery extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: width! * 15, vertical: height! * 5),
+          padding: EdgeInsets.symmetric(horizontal: width! * 15, vertical: height! * 5),
           child: Text(
             'All Stores',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: getSizeConfig.getPixels(18)),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: getSizeConfig.getPixels(18)),
           ),
         ),
         Flexible(
@@ -503,8 +420,7 @@ class Delivery extends StatelessWidget {
                   Container(
                     height: height! * 250,
                     child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width! * 10, vertical: height! * 10),
+                      padding: EdgeInsets.symmetric(horizontal: width! * 10, vertical: height! * 10),
                       child: Stack(
                         children: [
                           Container(
@@ -513,8 +429,7 @@ class Delivery extends StatelessWidget {
                               borderRadius: BorderRadius.circular(width! * 15),
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image:
-                                    CachedNetworkImageProvider(items.imageURL!),
+                                image: CachedNetworkImageProvider(items.imageURL!),
                               ),
                             ),
                           ),
@@ -555,9 +470,7 @@ class Delivery extends StatelessWidget {
                             left: width! * 20,
                             child: Card(
                               margin: EdgeInsets.zero,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.circular(width! * 20)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(width! * 20)),
                               color: Colors.white,
                               child: Padding(
                                 padding: EdgeInsets.all(width! * 15),
@@ -597,13 +510,11 @@ class Delivery extends StatelessWidget {
                                   ),
                                   Text(
                                     items.rate.toString(),
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   Text(
                                     '(${items.review.toString()})',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.normal),
+                                    style: TextStyle(fontWeight: FontWeight.normal),
                                   ),
                                 ],
                               ),
@@ -615,9 +526,7 @@ class Delivery extends StatelessWidget {
                           child: Text(
                             '${items.expense!} ${items.storeAddress!}',
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                fontSize: getSizeConfig.getPixels(14)),
+                            style: TextStyle(fontWeight: FontWeight.normal, fontSize: getSizeConfig.getPixels(14)),
                           ),
                         ),
                         Padding(

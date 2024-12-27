@@ -6,19 +6,19 @@ import 'package:pure_snackskitty/users/Screens/modelClass.dart';
 List<HomepageModelClass> nearestStore = [
   HomepageModelClass(
       expense: '\$\$',
-      imageURL: 'https://i.ibb.co/8cXqkQ0/KK-Website-Thumbs-Tuna-In-Jelly-Pouch-Front-d786157b-df16-4ec0-b3c7-f30e2c8e9c6e-600x.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 10),
+      imageURL: 'https://i.ibb.co/8cXqkQ0/KK-Website-Thumbs-Tuna-In-Jelly-Pouch-Front-d786157b-df16-4ec0-b3c7-f30e2c8e9c6e-600x.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 10),
   HomepageModelClass(
       expense: '\$\$\$',
       imageURL:
-      'https://i.ibb.co/7t1Xb2Y/27895-Marsupial-Pro-Plan-Adult-Cat-UTH-FRONT.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 180),
+      'https://i.ibb.co/7t1Xb2Y/27895-Marsupial-Pro-Plan-Adult-Cat-UTH-FRONT.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 180),
   HomepageModelClass(
       expense: '\$',
       imageURL:
-      'https://i.ibb.co/6J5V5bf/n12280477a-2-ovhyxyhlsxlq2xce.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 100),
+      'https://i.ibb.co/6J5V5bf/n12280477a-2-ovhyxyhlsxlq2xce.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 100),
   HomepageModelClass(
       expense: '\$',
       imageURL:
-      'https://i.ibb.co/bNQG9vx/614-6141103-whiskas-pocket-ocean-fish-1-2kg-whiskas-cat.jpg',storeName: 'Meow Box', storeAddress: '• 69, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 5),
+      'https://i.ibb.co/bNQG9vx/614-6141103-whiskas-pocket-ocean-fish-1-2kg-whiskas-cat.jpg',storeName: 'Meow Box', storeAddress: '• 666, At your home, near your bed.',deliveryFee: 7,review: 999,rate: 4.5,distance: 5),
 ];
 
 List<HomepageModelClass> pickupStoreDetails = [

@@ -9,10 +9,7 @@ export 'model/list_tab.dart';
 export 'model/scrollable_list_tab.dart';
 
 const Duration _kScrollDuration = const Duration(milliseconds: 150);
-const EdgeInsetsGeometry _kTabMargin =
-    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0);
 
-const SizedBox _kSizedBoxW8 = const SizedBox(width: 8.0);
 
 class ScrollableListTabView extends StatefulWidget {
   /// Create a new [ScrollableListTabView]
@@ -88,9 +85,6 @@ class _ScrollableListTabViewState extends State<ScrollableListTabView> {
                   valueListenable: _index,
                   builder: (_, i, __) {
                     var selected = index == i;
-                    var borderColor = selected
-                        ? tab.activeBackgroundColor
-                        : Theme.of(context).dividerColor;
                     return Container(
                       height: 32,
                       margin: EdgeInsets.fromLTRB(0, 10, 10,0),
@@ -143,23 +137,12 @@ class _ScrollableListTabViewState extends State<ScrollableListTabView> {
     );
   }
 
-  Widget _buildInnerTab(int index) {
-    var tab = widget.tabs[index].tab;
-    var textStyle = Theme.of(context).textTheme.bodyText1!.copyWith(fontWeight: FontWeight.w500);
-    return Builder(
-      builder: (_) {
-        return Text(
-          tab.label
-        );
-      },
-    );
-  }
 
   void _onInnerViewScrolled() async {
     var positions = _bodyPositionsListener.itemPositions.value;
 
     /// Target [ScrollView] is not attached to any views and/or has no listeners.
-    if (positions == null || positions.isEmpty) return;
+    if (positions.isEmpty) return;
 
     /// Capture the index of the first [ItemPosition]. If the saved index is same
     /// with the current one do nothing and return.

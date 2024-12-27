@@ -3,12 +3,11 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter/services.dart';
-import 'package:connectivity/connectivity.dart';
 import 'dart:async';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:pure_snackskitty/main_app/utils/controller/sizeConfig.dart';
 import 'package:pure_snackskitty/main_app/widgets/iconButton.dart';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'homePageTabs/delivery/delivery.dart';
 import 'homePageTabs/pickup/pickup.dart';
 import 'homePageTabs/shops/shops.dart';
@@ -29,7 +28,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
   bool? hasConnection;
   Future? _dialog;
   var currentStatus;
-  final Connectivity _connectivity = Connectivity();
   StreamSubscription<ConnectivityResult>? _connectivitySubscription;
 
   TabController? tabController;
@@ -48,8 +46,6 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
     } else {
       super.initState();
       setInitialScreenSize();
-      // initConnectivity();
-      // _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
       tabController = TabController(length: 3, vsync: this);
       tabController!.addListener(_handleTabSelection);
     }
@@ -76,49 +72,36 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
     height = getSizeConfig.height.value;
   }
 
-  Future initConnectivity() async {
-    ConnectivityResult? result;
+  Future<void> initConnectivity() async {
+    late List<ConnectivityResult> connectivityResult;
     try {
-      result = await _connectivity.checkConnectivity();
+      connectivityResult = await (Connectivity().checkConnectivity());
     } on PlatformException catch (e) {
-      print(e.toString());
-    }
-    if (!mounted) {
-      return Future.value(null);
-    }
-
-    return _updateConnectionStatus(result);
-  }
-
-  Future<void> _updateConnectionStatus(status) async {
-    currentStatus = status;
-    switch (currentStatus) {
-      case ConnectivityResult.wifi:
-      case ConnectivityResult.mobile:
-        if (_dialog != null) {
-          _dialog = null;
-          Navigator.pop(context);
-        }
-        break;
-      case ConnectivityResult.none:
-        _dialog = showDialog();
-        break;
-      default:
-        print(currentStatus.toString());
-        break;
-    }
-    var connection = await (checkConnection() as FutureOr<bool>);
-    if (!connection) {
+      debugPrint(e.toString());
       Get.snackbar('Connection Issue', 'Fluctuating Network Detected!',
           backgroundColor: Colors.black,
           colorText: Colors.white,
           margin: EdgeInsets.only(bottom: height! * 20, left: width! * 15, right: width! * 15),
           snackPosition: SnackPosition.BOTTOM);
-    } else {
-      // LocalNotification.showNotification('SnacksKitty', 'Welcome home, nyah!!');
     }
-    print('init result: ${currentStatus.toString()}');
+    if (!mounted) {
+      return Future.value(null);
+    }
+    if (connectivityResult.contains(ConnectivityResult.mobile)) {
+      if (_dialog != null) {
+        _dialog = null;
+        Navigator.pop(context);
+      }
+    } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
+    } else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
+    } else if (connectivityResult.contains(ConnectivityResult.vpn)) {
+    } else if (connectivityResult.contains(ConnectivityResult.bluetooth)) {
+    } else if (connectivityResult.contains(ConnectivityResult.other)) {
+    } else if (connectivityResult.contains(ConnectivityResult.none)) {
+      _dialog = showDialog();
+    }
   }
+
 
   Future showDialog() {
     return Alert(
@@ -200,10 +183,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return WillPopScope(
-      onWillPop: () async {
-        return Future.value(null);
-      },
+    return PopScope(
+      canPop: false,
       child: Scaffold(
           key: scaffoldKey,
           drawerEnableOpenDragGesture: false,
@@ -309,22 +290,27 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin,
           ),
           body: Column(
             children: [
-              TabBar(
-                controller: tabController,
-                unselectedLabelColor: Colors.black,
-                indicatorColor: Colors.purple,
-                labelColor: Colors.purple,
-                tabs: [
-                  Tab(
-                    text: 'Delivery',
-                  ),
-                  Tab(
-                    text: 'Pick-Up',
-                  ),
-                  Tab(
-                    text: 'Shops',
-                  ),
-                ],
+              GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: TabBar(
+                  controller: tabController,
+                  unselectedLabelColor: Colors.black,
+                  indicatorColor: Colors.purple,
+                  labelColor: Colors.purple,
+                  tabs: [
+                    Tab(
+                      text: 'Delivery',
+                    ),
+                    Tab(
+                      text: 'Pick-Up',
+                    ),
+                    Tab(
+                      text: 'Shops',
+                    ),
+                  ],
+                ),
               ),
               Expanded(
                 child: IndexedStack(
